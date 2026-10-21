@@ -1,0 +1,583 @@
+/* ============================================================
+   Histórico das bandeiras tarifárias — ANEEL
+   Mobile-first · WCAG 2.2 AA
+   ============================================================ */
+
+/* ---------- Tokens ---------- */
+:root {
+  --cor-fundo: #ffffff;
+  --cor-fundo-alt: #f2f5f9;
+  --cor-texto: #16191d;
+  --cor-texto-suave: #454b54;
+  --cor-borda: #d3d9e0;
+  /* Borda de componentes de UI (botão) — precisa de 3:1, por isso mais escura que --cor-borda */
+  --cor-borda-campo: #6b737d;
+  --cor-primaria: #0a4d8c;
+  --cor-primaria-escura: #073561;
+  --cor-foco: #b3005c;
+  --cor-destaque-fundo: #eaf2fb;
+  --cor-destaque-borda: #9dc2e8;
+
+  --bandeira-verde-fundo: #e2f3e4;
+  --bandeira-verde-texto: #14532d;
+  --bandeira-verde-borda: #3f8f52;
+
+  --bandeira-amarela-fundo: #fff3d1;
+  --bandeira-amarela-texto: #63440a;
+  --bandeira-amarela-borda: #a87b16;
+
+  --bandeira-vermelha-p1-fundo: #fde8e8;
+  --bandeira-vermelha-p1-texto: #7c1d1d;
+  --bandeira-vermelha-p1-borda: #c0392b;
+
+  --bandeira-vermelha-p2-fundo: #fbdcd7;
+  --bandeira-vermelha-p2-texto: #6b1512;
+  --bandeira-vermelha-p2-borda: #a5261a;
+
+  --bandeira-escassez-hidrica-fundo: #efe4f7;
+  --bandeira-escassez-hidrica-texto: #452765;
+  --bandeira-escassez-hidrica-borda: #7a4cae;
+
+  /* Faixas do gráfico (fundo) e linhas */
+  --faixa-verde: #e6f5e8;
+  --faixa-amarela: #fff7e0;
+  --faixa-vermelha-p1: #fdecec;
+  --faixa-vermelha-p2: #fbdcd7;
+  --faixa-escassez-hidrica: #f1e8f9;
+  --cor-linha-grafico: #4b5561;
+  --cor-grade: #e4e8ee;
+  --cor-eixo: #9aa4b0;
+
+  --espaco-1: 0.25rem;
+  --espaco-2: 0.5rem;
+  --espaco-3: 0.75rem;
+  --espaco-4: 1rem;
+  --espaco-5: 1.5rem;
+  --espaco-6: 2rem;
+  --espaco-7: 3rem;
+
+  --raio: 0.5rem;
+  --largura-max: 52rem;
+  --alvo-toque: 2.75rem;
+
+  --fonte: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cor-fundo: #12151a;
+    --cor-fundo-alt: #1a1f26;
+    --cor-texto: #eef1f5;
+    --cor-texto-suave: #b6bec9;
+    --cor-borda: #39424e;
+    --cor-borda-campo: #8b96a3;
+    --cor-primaria: #7fb3e8;
+    --cor-primaria-escura: #a8cdf0;
+    --cor-foco: #ff7ab8;
+    --cor-destaque-fundo: #17222f;
+    --cor-destaque-borda: #2f4c68;
+
+    --bandeira-verde-fundo: #14261a;
+    --bandeira-verde-texto: #9be0aa;
+    --bandeira-verde-borda: #3f8f52;
+
+    --bandeira-amarela-fundo: #2b2110;
+    --bandeira-amarela-texto: #f0cf7a;
+    --bandeira-amarela-borda: #a87b16;
+
+    --bandeira-vermelha-p1-fundo: #2c1616;
+    --bandeira-vermelha-p1-texto: #f0a2a2;
+    --bandeira-vermelha-p1-borda: #c0392b;
+
+    --bandeira-vermelha-p2-fundo: #331512;
+    --bandeira-vermelha-p2-texto: #f5b3a9;
+    --bandeira-vermelha-p2-borda: #a5261a;
+
+    --bandeira-escassez-hidrica-fundo: #221a30;
+    --bandeira-escassez-hidrica-texto: #cfb4f0;
+    --bandeira-escassez-hidrica-borda: #7a4cae;
+
+    --faixa-verde: #14261a;
+    --faixa-amarela: #2b2110;
+    --faixa-vermelha-p1: #2c1616;
+    --faixa-vermelha-p2: #331512;
+    --faixa-escassez-hidrica: #221a30;
+    --cor-linha-grafico: #aeb8c4;
+    --cor-grade: #2a303a;
+    --cor-eixo: #5b6674;
+  }
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--fonte);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cor-texto);
+  background: var(--cor-fundo-alt);
+}
+
+h1, h2 { line-height: 1.25; margin: 0 0 var(--espaco-3); }
+h1 { font-size: 1.625rem; }
+h2 { font-size: 1.25rem; }
+
+p { margin: 0 0 var(--espaco-3); }
+p:last-child { margin-bottom: 0; }
+
+strong { font-weight: 700; }
+
+a {
+  color: var(--cor-primaria);
+  text-underline-offset: 0.15em;
+}
+a:hover { color: var(--cor-primaria-escura); }
+
+:focus-visible {
+  outline: 3px solid var(--cor-foco);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Skip link ---------- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--espaco-4);
+  z-index: 100;
+  padding: var(--espaco-3) var(--espaco-4);
+  background: var(--cor-primaria);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 0 0 var(--raio) var(--raio);
+}
+.skip-link:focus { top: 0; color: #fff; }
+
+/* ---------- Layout ---------- */
+.conteiner {
+  max-width: var(--largura-max);
+  margin-inline: auto;
+  padding-inline: var(--espaco-4);
+}
+
+/* ---------- Cabeçalho ---------- */
+.cabecalho {
+  background: var(--cor-destaque-fundo);
+  border-bottom: 1px solid var(--cor-destaque-borda);
+  padding-block: var(--espaco-6);
+  margin-bottom: var(--espaco-5);
+}
+.eyebrow {
+  margin: 0 0 var(--espaco-2);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cor-texto-suave);
+}
+.subtitulo {
+  margin: 0;
+  color: var(--cor-texto-suave);
+  font-size: 0.9375rem;
+  max-width: 44rem;
+}
+
+/* ---------- Cartão ---------- */
+.cartao {
+  background: var(--cor-fundo);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: var(--espaco-4);
+  margin-bottom: var(--espaco-4);
+}
+.cartao-aviso {
+  background: var(--cor-fundo-alt);
+}
+
+@media (min-width: 30rem) {
+  .cartao { padding: var(--espaco-5); }
+  h1 { font-size: 1.875rem; }
+}
+
+/* ---------- Detalhes (dl) ---------- */
+.detalhes {
+  display: grid;
+  gap: var(--espaco-3);
+  margin: 0 0 var(--espaco-4);
+  padding: 0;
+}
+.detalhes > div {
+  display: grid;
+  gap: var(--espaco-1);
+  padding-bottom: var(--espaco-3);
+  border-bottom: 1px solid var(--cor-borda);
+}
+.detalhes > div:last-child { border-bottom: 0; padding-bottom: 0; }
+.detalhes dt {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--cor-texto-suave);
+}
+.detalhes dd {
+  margin: 0;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (min-width: 34rem) {
+  .detalhes { grid-template-columns: 1fr 1fr; gap: var(--espaco-4) var(--espaco-5); }
+  .detalhes > div { border-bottom: 0; padding-bottom: 0; }
+}
+
+/* ---------- Fonte ---------- */
+.fonte {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--cor-texto-suave);
+}
+.fonte a { font-weight: 600; }
+.resolucao { display: block; margin-top: var(--espaco-1); }
+.externo {
+  font-weight: 400;
+  font-size: 0.8125rem;
+}
+
+/* ---------- Bandeira (vigente) ---------- */
+.bandeira {
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-3);
+  margin-bottom: var(--espaco-2);
+}
+.bandeira-icone {
+  flex: none;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  border: 3px solid currentColor;
+}
+.bandeira-nome { font-size: 1.125rem; }
+.bandeira-nome strong { font-weight: 800; letter-spacing: 0.02em; }
+
+.bandeira-descricao { color: var(--cor-texto-suave); }
+
+/* Cores da bandeira — sempre acompanhadas de texto, nunca só cor */
+.bandeira-verde { color: var(--bandeira-verde-texto); }
+.bandeira-amarela { color: var(--bandeira-amarela-texto); }
+.bandeira-vermelha-p1 { color: var(--bandeira-vermelha-p1-texto); }
+.bandeira-vermelha-p2 { color: var(--bandeira-vermelha-p2-texto); }
+.bandeira-escassez-hidrica { color: var(--bandeira-escassez-hidrica-texto); }
+
+.bandeira-verde-bloco  { background: var(--bandeira-verde-fundo); border-color: var(--bandeira-verde-borda); }
+.bandeira-verde-bloco .bandeira-nome,
+.bandeira-verde-bloco .bandeira-descricao { color: var(--bandeira-verde-texto); }
+.bandeira-verde-bloco .bandeira-icone { background: var(--bandeira-verde-borda); }
+
+.bandeira-amarela-bloco  { background: var(--bandeira-amarela-fundo); border-color: var(--bandeira-amarela-borda); }
+.bandeira-amarela-bloco .bandeira-nome,
+.bandeira-amarela-bloco .bandeira-descricao { color: var(--bandeira-amarela-texto); }
+.bandeira-amarela-bloco .bandeira-icone { background: var(--bandeira-amarela-borda); }
+
+.bandeira-vermelha-p1-bloco  { background: var(--bandeira-vermelha-p1-fundo); border-color: var(--bandeira-vermelha-p1-borda); }
+.bandeira-vermelha-p1-bloco .bandeira-nome,
+.bandeira-vermelha-p1-bloco .bandeira-descricao { color: var(--bandeira-vermelha-p1-texto); }
+.bandeira-vermelha-p1-bloco .bandeira-icone { background: var(--bandeira-vermelha-p1-borda); }
+
+.bandeira-vermelha-p2-bloco  { background: var(--bandeira-vermelha-p2-fundo); border-color: var(--bandeira-vermelha-p2-borda); }
+.bandeira-vermelha-p2-bloco .bandeira-nome,
+.bandeira-vermelha-p2-bloco .bandeira-descricao { color: var(--bandeira-vermelha-p2-texto); }
+.bandeira-vermelha-p2-bloco .bandeira-icone { background: var(--bandeira-vermelha-p2-borda); }
+
+.bandeira-escassez-hidrica-bloco  { background: var(--bandeira-escassez-hidrica-fundo); border-color: var(--bandeira-escassez-hidrica-borda); }
+.bandeira-escassez-hidrica-bloco .bandeira-nome,
+.bandeira-escassez-hidrica-bloco .bandeira-descricao { color: var(--bandeira-escassez-hidrica-texto); }
+.bandeira-escassez-hidrica-bloco .bandeira-icone { background: var(--bandeira-escassez-hidrica-borda); }
+
+/* ---------- Instruções e avisos suaves ---------- */
+.instrucao { margin-bottom: var(--espaco-4); }
+
+.aviso-suave {
+  margin: var(--espaco-3) 0 0;
+  font-size: 0.875rem;
+  color: var(--cor-texto-suave);
+}
+
+.estimativa-vazia {
+  margin: 0 0 var(--espaco-4);
+  padding: var(--espaco-4);
+  font-size: 0.9375rem;
+  color: var(--cor-texto-suave);
+  background: var(--cor-fundo-alt);
+  border: 1px dashed var(--cor-borda);
+  border-radius: var(--raio);
+}
+
+/* ---------- Chips de ano ---------- */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espaco-2);
+  margin-bottom: var(--espaco-4);
+}
+.chip {
+  min-height: 2.25rem;
+  padding: var(--espaco-1) var(--espaco-3);
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--cor-texto);
+  background: var(--cor-fundo);
+  border: 1px solid var(--cor-borda-campo);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.chip:hover { border-color: var(--cor-primaria); }
+.chip[aria-pressed="true"] {
+  color: #fff;
+  background: var(--cor-primaria);
+  border-color: var(--cor-primaria);
+}
+
+/* ---------- Gráfico ---------- */
+.grafico-rolagem {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: var(--espaco-3);
+}
+.grafico-area {
+  position: relative;
+  min-width: 42rem;
+}
+#grafico {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+#grafico .faixa { stroke: var(--cor-grade); }
+#grafico .faixa-rotulo {
+  font-size: 13px;
+  font-weight: 700;
+  text-anchor: end;
+  dominant-baseline: middle;
+}
+#grafico .rotulo-verde { fill: var(--bandeira-verde-texto); }
+#grafico .rotulo-amarela { fill: var(--bandeira-amarela-texto); }
+#grafico .rotulo-vermelha-p1 { fill: var(--bandeira-vermelha-p1-texto); }
+#grafico .rotulo-vermelha-p2 { fill: var(--bandeira-vermelha-p2-texto); }
+#grafico .rotulo-escassez-hidrica { fill: var(--bandeira-escassez-hidrica-texto); }
+
+#grafico .grade { stroke: var(--cor-grade); stroke-width: 1; }
+#grafico .eixo { stroke: var(--cor-eixo); stroke-width: 1.5; }
+#grafico .rotulo-mes {
+  font-size: 13px;
+  fill: var(--cor-texto-suave);
+  text-anchor: middle;
+}
+#grafico .rotulo-ano {
+  font-size: 12px;
+  font-weight: 700;
+  fill: var(--cor-texto-suave);
+  text-anchor: end;
+  dominant-baseline: middle;
+}
+#grafico .linha-ano {
+  fill: none;
+  stroke: var(--cor-linha-grafico);
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  transition: opacity 0.15s ease;
+}
+#grafico .ponto {
+  fill: var(--cor-fundo);
+  stroke: var(--cor-linha-grafico);
+  stroke-width: 1.6;
+  transition: opacity 0.15s ease;
+}
+#grafico .ponto:hover { stroke: var(--cor-foco); }
+#grafico .linha-ano.destacado {
+  stroke: var(--cor-primaria);
+  stroke-width: 2.6;
+}
+#grafico .ponto.destacado {
+  stroke: var(--cor-primaria);
+  stroke-width: 2;
+}
+#grafico .rotulo-ano.destacado { fill: var(--cor-primaria); }
+
+/* Dica (tooltip) */
+.dica {
+  position: absolute;
+  z-index: 5;
+  transform: translate(-50%, calc(-100% - 10px));
+  padding: var(--espaco-2) var(--espaco-3);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  white-space: nowrap;
+  color: var(--cor-fundo);
+  background: var(--cor-texto);
+  border-radius: var(--raio);
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+.dica strong { font-variant-numeric: tabular-nums; }
+
+.nota-grafico {
+  margin: 0 0 var(--espaco-3);
+  font-size: 0.875rem;
+  color: var(--cor-texto-suave);
+}
+
+/* ---------- Detalhes expansível (tabela mensal) ---------- */
+.bloco-detalhes {
+  margin-bottom: var(--espaco-4);
+  border-top: 1px solid var(--cor-borda);
+  padding-top: var(--espaco-3);
+}
+.bloco-detalhes summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--cor-primaria);
+}
+.bloco-detalhes summary:hover { color: var(--cor-primaria-escura); }
+.bloco-detalhes[open] summary { margin-bottom: var(--espaco-3); }
+
+/* ---------- Tabela ---------- */
+.tabela-rolagem {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: var(--espaco-3);
+}
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+.tabela th,
+.tabela td {
+  padding: var(--espaco-3);
+  text-align: left;
+  border-bottom: 1px solid var(--cor-borda);
+  vertical-align: middle;
+}
+.tabela thead th {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--cor-texto-suave);
+  border-bottom: 2px solid var(--cor-borda);
+}
+.tabela tbody th {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.tabela td:nth-child(1),
+.tabela td:nth-child(3) {
+  font-variant-numeric: tabular-nums;
+}
+.tabela tbody tr:last-child th,
+.tabela tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.tabela-resumo td { text-align: center; }
+.tabela-resumo thead th:not(:first-child) { text-align: center; }
+.tabela-resumo tbody th { text-align: left; }
+
+.linha-atual { background: var(--cor-destaque-fundo); }
+.linha-atual th,
+.linha-atual td { border-bottom-color: var(--cor-destaque-borda); }
+
+.valor-celula { font-weight: 700; }
+
+/* Selos de bandeira (tabela/lista) */
+.selo {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+.selo-verde { color: var(--bandeira-verde-texto); }
+.selo-amarela { color: var(--bandeira-amarela-texto); }
+.selo-vermelha-p1 { color: var(--bandeira-vermelha-p1-texto); }
+.selo-vermelha-p2 { color: var(--bandeira-vermelha-p2-texto); }
+.selo-escassez-hidrica { color: var(--bandeira-escassez-hidrica-texto); }
+
+/* ---------- Dicionário de bandeiras ---------- */
+.lista-bandeiras {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--espaco-4);
+}
+.lista-bandeiras li {
+  display: grid;
+  gap: var(--espaco-1);
+  padding-bottom: var(--espaco-4);
+  border-bottom: 1px solid var(--cor-borda);
+}
+.lista-bandeiras li:last-child { border-bottom: 0; padding-bottom: 0; }
+.lista-bandeiras .selo { justify-self: start; }
+.lista-bandeiras .desc { color: var(--cor-texto); }
+
+/* ---------- Lista de avisos ---------- */
+.lista-avisos {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: var(--espaco-3);
+}
+.lista-avisos li { color: var(--cor-texto); }
+
+/* ---------- Rodapé ---------- */
+.rodape {
+  background: var(--cor-fundo);
+  border-top: 1px solid var(--cor-borda);
+  padding-block: var(--espaco-5);
+  margin-top: var(--espaco-6);
+  font-size: 0.875rem;
+  color: var(--cor-texto-suave);
+}
+.verificado { margin-bottom: var(--espaco-3); font-size: 0.9375rem; }
+.rodape-nota { margin: 0; }
+
+/* ---------- Movimento reduzido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Impressão ---------- */
+@media print {
+  body { background: #fff; }
+  .skip-link, .estimativa-vazia, .chips { display: none; }
+  .cartao { border: 1px solid #999; break-inside: avoid; }
+  .grafico-rolagem { overflow: visible; }
+}

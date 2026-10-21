@@ -1,0 +1,1188 @@
+{
+  "fonte": {
+    "nome": "ANEEL — Dados Abertos: Bandeiras Tarifárias",
+    "url": "https://dadosabertos.aneel.gov.br/dataset/bandeiras-tarifarias",
+    "recurso": "https://dadosabertos.aneel.gov.br/dataset/bandeiras-tarifarias/resource/0591b8f6-fe54-437b-b72b-1aa2efd46e42",
+    "licenca": "ODbL (Open Data Commons Open Database License)",
+    "atualizadoEm": "2026-10-19"
+  },
+  "unidade": "adicionalMwh em R$/MWh (como publicado pela ANEEL); adicionalKwh = adicionalMwh / 1000",
+  "bandeiras": [
+    {
+      "chave": "verde",
+      "nome": "Verde",
+      "severidade": 0,
+      "descricao": "Condições favoráveis de geração de energia. A tarifa não sofre nenhum acréscimo."
+    },
+    {
+      "chave": "amarela",
+      "nome": "Amarela",
+      "severidade": 1,
+      "descricao": "Condições de geração menos favoráveis."
+    },
+    {
+      "chave": "vermelha-p1",
+      "nome": "Vermelha P1",
+      "severidade": 2,
+      "descricao": "Vermelha, patamar 1: condições mais custosas de geração."
+    },
+    {
+      "chave": "vermelha-p2",
+      "nome": "Vermelha P2",
+      "severidade": 3,
+      "descricao": "Vermelha, patamar 2: condições ainda mais custosas de geração."
+    },
+    {
+      "chave": "escassez-hidrica",
+      "nome": "Escassez Hídrica",
+      "severidade": 4,
+      "descricao": "Bandeira criada para a seca de 2021, vigente de setembro de 2021 a abril de 2022."
+    }
+  ],
+  "vigente": {
+    "competencia": "2026-10",
+    "bandeira": "Verde",
+    "chave": "verde",
+    "severidade": 0,
+    "adicionalMwh": 0,
+    "adicionalKwh": 0
+  },
+  "meses": [
+    {
+      "competencia": "2015-01",
+      "bandeira": "Vermelha P1",
+      "chave": "vermelha-p1",
+      "severidade": 2,
+      "adicionalMwh": 30,
+      "adicionalKwh": 0.03
+    },
+    {
+      "competencia": "2015-02",
+      "bandeira": "Vermelha P1",
+      "chave": "vermelha-p1",
+      "severidade": 2,
+      "adicionalMwh": 30,
+      "adicionalKwh": 0.03
+    },
+    {
+      "competencia": "2015-03",
+      "bandeira": "Vermelha P1",
+      "chave": "vermelha-p1",
+      "severidade": 2,
+      "adicionalMwh": 55,
+      "adicionalKwh": 0.055
+    },
+    {
+      "competencia": "2015-04",
+      "bandeira": "Vermelha P1",
+      "chave": "vermelha-p1",
+      "severidade": 2,
+      "adicionalMwh": 55,
+      "adicionalKwh": 0.055
+    },
+    {
+      "competencia": "2015-05",
+      "bandeira": "Vermelha P1",
+      "chave": "vermelha-p1",
+      "severidade": 2,
+      "adicionalMwh": 55,
+      "adicionalKwh": 0.055
+    },
+    {
+      "competencia": "2015-06",
+      "bandeira": "Vermelha P1",
+      "chave": "vermelha-p1",
+      "severidade": 2,
+      "adicionalMwh": 55,
+      "adicionalKwh": 0.055
+    },
+    {
+      "competencia": "2015-07",
+      "bandeira": "Vermelha P1",
+      "chave": "vermelha-p1",
+      "severidade": 2,
+      "adicionalMwh": 55,
+      "adicionalKwh": 0.055
+    },
+    {
+      "competencia": "2015-08",
+      "bandeira": "Vermelha P1",
+      "chave": "vermelha-p1",
+      "severidade": 2,
+      "adicionalMwh": 55,
+      "adicionalKwh": 0.055
+    },
+    {
+      "competencia": "2015-09",
+      "bandeira": "Vermelha P1",
+      "chave": "vermelha-p1",
+      "severidade": 2,
+      "adicionalMwh": 45,
+      "adicionalKwh": 0.045
+    },
+    {
+      "competencia": "2015-10",
+      "bandeira": "Vermelha P1",
+      "chave": "vermelha-p1",
+      "severidade": 2,
+      "adicionalMwh": 45,
+      "adicionalKwh": 0.045
+    },
+    {
+      "competencia": "2015-11",
+      "bandeira": "Vermelha P1",
+      "chave": "vermelha-p1",
+      "severidade": 2,
+      "adicionalMwh": 45,
+      "adicionalKwh": 0.045
+    },
+    {
+      "competencia": "2015-12",
+      "bandeira": "Vermelha P1",
+      "chave": "vermelha-p1",
+      "severidade": 2,
+      "adicionalMwh": 45,
+      "adicionalKwh": 0.045
+    },
+    {
+      "competencia": "2016-01",
+      "bandeira": "Vermelha P1",
+      "chave": "vermelha-p1",
+      "severidade": 2,
+      "adicionalMwh": 45,
+      "adicionalKwh": 0.045
+    },
+    {
+      "competencia": "2016-02",
+      "bandeira": "Vermelha P2",
+      "chave": "vermelha-p2",
+      "severidade": 3,
+      "adicionalMwh": 45,
+      "adicionalKwh": 0.045
+    },
+    {
+      "competencia": "2016-03",
+      "bandeira": "Amarela",
+      "chave": "amarela",
+      "severidade": 1,
+      "adicionalMwh": 15,
+      "adicionalKwh": 0.015
+    },
+    {
+      "competencia": "2016-04",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2016-05",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2016-06",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2016-07",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2016-08",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2016-09",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2016-10",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2016-11",
+      "bandeira": "Amarela",
+      "chave": "amarela",
+      "severidade": 1,
+      "adicionalMwh": 15,
+      "adicionalKwh": 0.015
+    },
+    {
+      "competencia": "2016-12",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2017-01",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2017-02",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2017-03",
+      "bandeira": "Amarela",
+      "chave": "amarela",
+      "severidade": 1,
+      "adicionalMwh": 20,
+      "adicionalKwh": 0.02
+    },
+    {
+      "competencia": "2017-04",
+      "bandeira": "Vermelha P1",
+      "chave": "vermelha-p1",
+      "severidade": 2,
+      "adicionalMwh": 30,
+      "adicionalKwh": 0.03
+    },
+    {
+      "competencia": "2017-05",
+      "bandeira": "Vermelha P1",
+      "chave": "vermelha-p1",
+      "severidade": 2,
+      "adicionalMwh": 30,
+      "adicionalKwh": 0.03
+    },
+    {
+      "competencia": "2017-06",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2017-07",
+      "bandeira": "Amarela",
+      "chave": "amarela",
+      "severidade": 1,
+      "adicionalMwh": 20,
+      "adicionalKwh": 0.02
+    },
+    {
+      "competencia": "2017-08",
+      "bandeira": "Vermelha P1",
+      "chave": "vermelha-p1",
+      "severidade": 2,
+      "adicionalMwh": 30,
+      "adicionalKwh": 0.03
+    },
+    {
+      "competencia": "2017-09",
+      "bandeira": "Amarela",
+      "chave": "amarela",
+      "severidade": 1,
+      "adicionalMwh": 20,
+      "adicionalKwh": 0.02
+    },
+    {
+      "competencia": "2017-10",
+      "bandeira": "Vermelha P2",
+      "chave": "vermelha-p2",
+      "severidade": 3,
+      "adicionalMwh": 35,
+      "adicionalKwh": 0.035
+    },
+    {
+      "competencia": "2017-11",
+      "bandeira": "Vermelha P2",
+      "chave": "vermelha-p2",
+      "severidade": 3,
+      "adicionalMwh": 50,
+      "adicionalKwh": 0.05
+    },
+    {
+      "competencia": "2017-12",
+      "bandeira": "Vermelha P1",
+      "chave": "vermelha-p1",
+      "severidade": 2,
+      "adicionalMwh": 30,
+      "adicionalKwh": 0.03
+    },
+    {
+      "competencia": "2018-01",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2018-02",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2018-03",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2018-04",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2018-05",
+      "bandeira": "Amarela",
+      "chave": "amarela",
+      "severidade": 1,
+      "adicionalMwh": 10,
+      "adicionalKwh": 0.01
+    },
+    {
+      "competencia": "2018-06",
+      "bandeira": "Vermelha P2",
+      "chave": "vermelha-p2",
+      "severidade": 3,
+      "adicionalMwh": 50,
+      "adicionalKwh": 0.05
+    },
+    {
+      "competencia": "2018-07",
+      "bandeira": "Vermelha P2",
+      "chave": "vermelha-p2",
+      "severidade": 3,
+      "adicionalMwh": 50,
+      "adicionalKwh": 0.05
+    },
+    {
+      "competencia": "2018-08",
+      "bandeira": "Vermelha P2",
+      "chave": "vermelha-p2",
+      "severidade": 3,
+      "adicionalMwh": 50,
+      "adicionalKwh": 0.05
+    },
+    {
+      "competencia": "2018-09",
+      "bandeira": "Vermelha P2",
+      "chave": "vermelha-p2",
+      "severidade": 3,
+      "adicionalMwh": 50,
+      "adicionalKwh": 0.05
+    },
+    {
+      "competencia": "2018-10",
+      "bandeira": "Vermelha P2",
+      "chave": "vermelha-p2",
+      "severidade": 3,
+      "adicionalMwh": 50,
+      "adicionalKwh": 0.05
+    },
+    {
+      "competencia": "2018-11",
+      "bandeira": "Amarela",
+      "chave": "amarela",
+      "severidade": 1,
+      "adicionalMwh": 10,
+      "adicionalKwh": 0.01
+    },
+    {
+      "competencia": "2018-12",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2019-01",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2019-02",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2019-03",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2019-04",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2019-05",
+      "bandeira": "Amarela",
+      "chave": "amarela",
+      "severidade": 1,
+      "adicionalMwh": 10,
+      "adicionalKwh": 0.01
+    },
+    {
+      "competencia": "2019-06",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2019-07",
+      "bandeira": "Amarela",
+      "chave": "amarela",
+      "severidade": 1,
+      "adicionalMwh": 15,
+      "adicionalKwh": 0.015
+    },
+    {
+      "competencia": "2019-08",
+      "bandeira": "Vermelha P1",
+      "chave": "vermelha-p1",
+      "severidade": 2,
+      "adicionalMwh": 40,
+      "adicionalKwh": 0.04
+    },
+    {
+      "competencia": "2019-09",
+      "bandeira": "Vermelha P1",
+      "chave": "vermelha-p1",
+      "severidade": 2,
+      "adicionalMwh": 40,
+      "adicionalKwh": 0.04
+    },
+    {
+      "competencia": "2019-10",
+      "bandeira": "Amarela",
+      "chave": "amarela",
+      "severidade": 1,
+      "adicionalMwh": 15,
+      "adicionalKwh": 0.015
+    },
+    {
+      "competencia": "2019-11",
+      "bandeira": "Vermelha P1",
+      "chave": "vermelha-p1",
+      "severidade": 2,
+      "adicionalMwh": 41.69,
+      "adicionalKwh": 0.04169
+    },
+    {
+      "competencia": "2019-12",
+      "bandeira": "Amarela",
+      "chave": "amarela",
+      "severidade": 1,
+      "adicionalMwh": 13.43,
+      "adicionalKwh": 0.01343
+    },
+    {
+      "competencia": "2020-01",
+      "bandeira": "Amarela",
+      "chave": "amarela",
+      "severidade": 1,
+      "adicionalMwh": 13.43,
+      "adicionalKwh": 0.01343
+    },
+    {
+      "competencia": "2020-02",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2020-03",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2020-04",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2020-05",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2020-06",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2020-07",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2020-08",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2020-09",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2020-10",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2020-11",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2020-12",
+      "bandeira": "Vermelha P2",
+      "chave": "vermelha-p2",
+      "severidade": 3,
+      "adicionalMwh": 62.43,
+      "adicionalKwh": 0.06243
+    },
+    {
+      "competencia": "2021-01",
+      "bandeira": "Amarela",
+      "chave": "amarela",
+      "severidade": 1,
+      "adicionalMwh": 13.43,
+      "adicionalKwh": 0.01343
+    },
+    {
+      "competencia": "2021-02",
+      "bandeira": "Amarela",
+      "chave": "amarela",
+      "severidade": 1,
+      "adicionalMwh": 13.43,
+      "adicionalKwh": 0.01343
+    },
+    {
+      "competencia": "2021-03",
+      "bandeira": "Amarela",
+      "chave": "amarela",
+      "severidade": 1,
+      "adicionalMwh": 13.43,
+      "adicionalKwh": 0.01343
+    },
+    {
+      "competencia": "2021-04",
+      "bandeira": "Amarela",
+      "chave": "amarela",
+      "severidade": 1,
+      "adicionalMwh": 13.43,
+      "adicionalKwh": 0.01343
+    },
+    {
+      "competencia": "2021-05",
+      "bandeira": "Vermelha P1",
+      "chave": "vermelha-p1",
+      "severidade": 2,
+      "adicionalMwh": 41.69,
+      "adicionalKwh": 0.04169
+    },
+    {
+      "competencia": "2021-06",
+      "bandeira": "Vermelha P2",
+      "chave": "vermelha-p2",
+      "severidade": 3,
+      "adicionalMwh": 62.43,
+      "adicionalKwh": 0.06243
+    },
+    {
+      "competencia": "2021-07",
+      "bandeira": "Vermelha P2",
+      "chave": "vermelha-p2",
+      "severidade": 3,
+      "adicionalMwh": 94.92,
+      "adicionalKwh": 0.09492
+    },
+    {
+      "competencia": "2021-08",
+      "bandeira": "Vermelha P2",
+      "chave": "vermelha-p2",
+      "severidade": 3,
+      "adicionalMwh": 94.92,
+      "adicionalKwh": 0.09492
+    },
+    {
+      "competencia": "2021-09",
+      "bandeira": "Escassez Hídrica",
+      "chave": "escassez-hidrica",
+      "severidade": 4,
+      "adicionalMwh": 142,
+      "adicionalKwh": 0.142
+    },
+    {
+      "competencia": "2021-10",
+      "bandeira": "Escassez Hídrica",
+      "chave": "escassez-hidrica",
+      "severidade": 4,
+      "adicionalMwh": 142,
+      "adicionalKwh": 0.142
+    },
+    {
+      "competencia": "2021-11",
+      "bandeira": "Escassez Hídrica",
+      "chave": "escassez-hidrica",
+      "severidade": 4,
+      "adicionalMwh": 142,
+      "adicionalKwh": 0.142
+    },
+    {
+      "competencia": "2021-12",
+      "bandeira": "Escassez Hídrica",
+      "chave": "escassez-hidrica",
+      "severidade": 4,
+      "adicionalMwh": 142,
+      "adicionalKwh": 0.142
+    },
+    {
+      "competencia": "2022-01",
+      "bandeira": "Escassez Hídrica",
+      "chave": "escassez-hidrica",
+      "severidade": 4,
+      "adicionalMwh": 142,
+      "adicionalKwh": 0.142
+    },
+    {
+      "competencia": "2022-02",
+      "bandeira": "Escassez Hídrica",
+      "chave": "escassez-hidrica",
+      "severidade": 4,
+      "adicionalMwh": 142,
+      "adicionalKwh": 0.142
+    },
+    {
+      "competencia": "2022-03",
+      "bandeira": "Escassez Hídrica",
+      "chave": "escassez-hidrica",
+      "severidade": 4,
+      "adicionalMwh": 142,
+      "adicionalKwh": 0.142
+    },
+    {
+      "competencia": "2022-04",
+      "bandeira": "Escassez Hídrica",
+      "chave": "escassez-hidrica",
+      "severidade": 4,
+      "adicionalMwh": 71,
+      "adicionalKwh": 0.071
+    },
+    {
+      "competencia": "2022-05",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2022-06",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2022-07",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2022-08",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2022-09",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2022-10",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2022-11",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2022-12",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2023-01",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2023-02",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2023-03",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2023-04",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2023-05",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2023-06",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2023-07",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2023-08",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2023-09",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2023-10",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2023-11",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2023-12",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2024-01",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2024-02",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2024-03",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2024-04",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2024-05",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2024-06",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2024-07",
+      "bandeira": "Amarela",
+      "chave": "amarela",
+      "severidade": 1,
+      "adicionalMwh": 18.85,
+      "adicionalKwh": 0.01885
+    },
+    {
+      "competencia": "2024-08",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2024-09",
+      "bandeira": "Vermelha P1",
+      "chave": "vermelha-p1",
+      "severidade": 2,
+      "adicionalMwh": 44.63,
+      "adicionalKwh": 0.04463
+    },
+    {
+      "competencia": "2024-10",
+      "bandeira": "Vermelha P2",
+      "chave": "vermelha-p2",
+      "severidade": 3,
+      "adicionalMwh": 78.77,
+      "adicionalKwh": 0.07877
+    },
+    {
+      "competencia": "2024-11",
+      "bandeira": "Amarela",
+      "chave": "amarela",
+      "severidade": 1,
+      "adicionalMwh": 18.85,
+      "adicionalKwh": 0.01885
+    },
+    {
+      "competencia": "2024-12",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2025-01",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2025-02",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2025-03",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2025-04",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2025-05",
+      "bandeira": "Amarela",
+      "chave": "amarela",
+      "severidade": 1,
+      "adicionalMwh": 18.85,
+      "adicionalKwh": 0.01885
+    },
+    {
+      "competencia": "2025-06",
+      "bandeira": "Vermelha P1",
+      "chave": "vermelha-p1",
+      "severidade": 2,
+      "adicionalMwh": 44.63,
+      "adicionalKwh": 0.04463
+    },
+    {
+      "competencia": "2025-07",
+      "bandeira": "Vermelha P1",
+      "chave": "vermelha-p1",
+      "severidade": 2,
+      "adicionalMwh": 44.63,
+      "adicionalKwh": 0.04463
+    },
+    {
+      "competencia": "2025-08",
+      "bandeira": "Vermelha P2",
+      "chave": "vermelha-p2",
+      "severidade": 3,
+      "adicionalMwh": 78.77,
+      "adicionalKwh": 0.07877
+    },
+    {
+      "competencia": "2025-09",
+      "bandeira": "Vermelha P2",
+      "chave": "vermelha-p2",
+      "severidade": 3,
+      "adicionalMwh": 78.77,
+      "adicionalKwh": 0.07877
+    },
+    {
+      "competencia": "2025-10",
+      "bandeira": "Vermelha P1",
+      "chave": "vermelha-p1",
+      "severidade": 2,
+      "adicionalMwh": 44.63,
+      "adicionalKwh": 0.04463
+    },
+    {
+      "competencia": "2025-11",
+      "bandeira": "Vermelha P1",
+      "chave": "vermelha-p1",
+      "severidade": 2,
+      "adicionalMwh": 44.63,
+      "adicionalKwh": 0.04463
+    },
+    {
+      "competencia": "2025-12",
+      "bandeira": "Amarela",
+      "chave": "amarela",
+      "severidade": 1,
+      "adicionalMwh": 18.85,
+      "adicionalKwh": 0.01885
+    },
+    {
+      "competencia": "2026-01",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2026-02",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2026-03",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2026-04",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    },
+    {
+      "competencia": "2026-05",
+      "bandeira": "Amarela",
+      "chave": "amarela",
+      "severidade": 1,
+      "adicionalMwh": 18.85,
+      "adicionalKwh": 0.01885
+    },
+    {
+      "competencia": "2026-06",
+      "bandeira": "Amarela",
+      "chave": "amarela",
+      "severidade": 1,
+      "adicionalMwh": 18.85,
+      "adicionalKwh": 0.01885
+    },
+    {
+      "competencia": "2026-07",
+      "bandeira": "Amarela",
+      "chave": "amarela",
+      "severidade": 1,
+      "adicionalMwh": 18.85,
+      "adicionalKwh": 0.01885
+    },
+    {
+      "competencia": "2026-08",
+      "bandeira": "Amarela",
+      "chave": "amarela",
+      "severidade": 1,
+      "adicionalMwh": 18.85,
+      "adicionalKwh": 0.01885
+    },
+    {
+      "competencia": "2026-09",
+      "bandeira": "Amarela",
+      "chave": "amarela",
+      "severidade": 1,
+      "adicionalMwh": 18.85,
+      "adicionalKwh": 0.01885
+    },
+    {
+      "competencia": "2026-10",
+      "bandeira": "Verde",
+      "chave": "verde",
+      "severidade": 0,
+      "adicionalMwh": 0,
+      "adicionalKwh": 0
+    }
+  ]
+}

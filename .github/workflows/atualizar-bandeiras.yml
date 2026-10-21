@@ -1,0 +1,37 @@
+name: Atualizar dados das bandeiras
+
+on:
+  schedule:
+    # Dia 1 de cada mês, 12:00 UTC — a ANEEL publica o acionamento do mês anterior
+    - cron: '0 12 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Baixar dados da ANEEL
+        run: node scripts/atualizar-bandeiras.mjs
+
+      - name: Commit e push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/bandeiras.json index.html
+          if git diff --cached --quiet; then
+            echo "Nada a atualizar — dados já são os mais recentes."
+          else
+            git commit -m "Atualiza snapshot das bandeiras da ANEEL"
+            git push
+          fi
