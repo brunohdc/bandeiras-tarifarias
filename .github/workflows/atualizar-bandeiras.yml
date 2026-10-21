@@ -2,7 +2,9 @@ name: Atualizar dados das bandeiras
 
 on:
   schedule:
-    # Dia 1 de cada mês, 12:00 UTC — a ANEEL publica o acionamento do mês anterior
+    # Dia 26 (quando a ANEEL anuncia a bandeira do mês seguinte) e dia 1
+    # (início do mês de vigência), sempre às 12:00 UTC
+    - cron: '0 12 26 * *'
     - cron: '0 12 1 * *'
   workflow_dispatch:
 
