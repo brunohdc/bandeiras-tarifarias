@@ -4,6 +4,7 @@
 
 ## Dados
 
+- [Página em texto (HTML)](https://brunohdc.github.io/bandeiras-tarifarias/dados.html): versão estática, sem JavaScript, com bandeira vigente, agenda, projeção da CCEE, tabela mensal, resumo anual e dicionário.
 - [Bandeiras mensais (JSON)](https://brunohdc.github.io/bandeiras-tarifarias/data/bandeiras.json): série completa com bandeira, severidade e adicional em R$/MWh e R$/kWh.
 - [Agenda de divulgação (JSON)](https://brunohdc.github.io/bandeiras-tarifarias/data/agenda.json): datas em que a ANEEL anuncia a bandeira do mês seguinte.
 - [Projeção da CCEE (JSON)](https://brunohdc.github.io/bandeiras-tarifarias/data/projecao.json): edição mais recente do Encontro do PLD, resumo da projeção e link para o PDF oficial.

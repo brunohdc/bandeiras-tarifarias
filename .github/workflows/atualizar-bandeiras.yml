@@ -26,11 +26,14 @@ jobs:
       - name: Baixar dados da ANEEL
         run: node scripts/atualizar-bandeiras.mjs
 
+      - name: Gerar página estática
+        run: node scripts/gerar-dados-estaticos.mjs
+
       - name: Commit e push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/bandeiras.json index.html sitemap.xml
+          git add data/bandeiras.json index.html dados.html sitemap.xml
           if git diff --cached --quiet; then
             echo "Nada a atualizar — dados já são os mais recentes."
           else

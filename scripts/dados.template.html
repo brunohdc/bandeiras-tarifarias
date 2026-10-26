@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dados das bandeiras tarifárias — ANEEL (versão em texto)</title>
+<meta name="description" content="Versão em texto, sem JavaScript, com a bandeira vigente, agenda de divulgação, projeção da CCEE, tabela mensal e resumo anual das bandeiras tarifárias. Dados da ANEEL.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://brunohdc.github.io/bandeiras-tarifarias/dados.html">
+<meta name="theme-color" content="#0a4d8c">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-96.png" sizes="96x96" type="image/png">
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="stylesheet" href="bandeiras.css?v={{CSS_V}}">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L1BM28TN18"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-L1BM28TN18');
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="cabecalho">
+  <div class="conteiner">
+    <p class="eyebrow">Energia elétrica · Brasil</p>
+    <h1>Dados das bandeiras tarifárias</h1>
+    <p class="subtitulo">
+      Versão em texto, sem JavaScript, com os mesmos dados da
+      <a href="./">página interativa</a>. Fontes: ANEEL e CCEE.
+    </p>
+  </div>
+</header>
+
+<main id="conteudo" class="conteiner">
+
+  <p class="aviso-suave">
+    Página estática gerada automaticamente a partir dos dados abertos. Para o gráfico e as
+    tabelas interativas, use a <a href="./">página principal</a>.
+  </p>
+
+  <p class="marcador" id="atual">Atual</p>
+
+  <!--{{VIGENTE}}-->
+
+  <!--{{AGENDA}}-->
+
+  <p class="marcador" id="projecao">Projeção para os próximos meses</p>
+
+  <!--{{PROJECAO}}-->
+
+  <p class="marcador" id="passado">Passado</p>
+
+  <!--{{MESES}}-->
+
+  <!--{{RESUMO}}-->
+
+  <!--{{DICIONARIO}}-->
+
+  <!--{{AVISOS}}-->
+
+</main>
+
+<footer class="rodape">
+  <div class="conteiner">
+    <p class="verificado">
+      <strong>Dados da ANEEL atualizados em:</strong>
+      <time datetime="{{DATA_ANEEL_ISO}}">{{DATA_ANEEL}}</time>
+    </p>
+    <p class="rodape-nota">
+      Consulta independente construída sobre dados públicos da
+      <a href="https://dadosabertos.aneel.gov.br/dataset/bandeiras-tarifarias" rel="noopener" target="_blank">Agência Nacional de Energia Elétrica (ANEEL)<span class="externo"> (site externo)</span></a>,
+      publicados sob licença ODbL. Os valores têm caráter informativo e não substituem a fatura
+      da sua distribuidora.
+    </p>
+    <p class="rodape-nota">
+      Dados brutos: <a href="data/bandeiras.json">bandeiras.json</a>,
+      <a href="data/agenda.json">agenda.json</a> e
+      <a href="data/projecao.json">projecao.json</a>.
+    </p>
+    <p class="rodape-nota rodape-analytics">
+      Esta página usa o Google Analytics para medir audiência (visitas e tempo de permanência)
+      de forma agregada, sem fins publicitários.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -34,11 +34,19 @@ jobs:
         id: check
         run: xvfb-run -a python scripts/atualizar-projecao.py
 
+      - name: Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Gerar página estática
+        run: node scripts/gerar-dados-estaticos.mjs
+
       - name: Commit e push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/projecao.json index.html
+          git add data/projecao.json index.html dados.html sitemap.xml
           if git diff --cached --quiet; then
             echo "Nada a atualizar — link já é o mais recente."
           else

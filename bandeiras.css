@@ -700,6 +700,7 @@ html[data-visao="resumida"] .so-detalhado { display: none; }
 }
 .verificado { margin-bottom: var(--espaco-3); font-size: 0.9375rem; }
 .rodape-nota { margin: 0; }
+.rodape-dados { margin-top: var(--espaco-3); }
 .rodape-analytics { margin-top: var(--espaco-3); }
 
 /* ---------- Movimento reduzido ---------- */
