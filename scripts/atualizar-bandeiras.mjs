@@ -186,6 +186,19 @@ async function atualizarFallbackHTML(json) {
   if (novo !== html) await writeFile(caminho, novo, 'utf8');
 }
 
+async function atualizarSitemap() {
+  const caminho = join(RAIZ, 'sitemap.xml');
+  let xml;
+  try {
+    xml = await readFile(caminho, 'utf8');
+  } catch {
+    return;
+  }
+  const hoje = new Date().toISOString().slice(0, 10);
+  const novo = xml.replace(/<lastmod>[^<]*<\/lastmod>/, '<lastmod>' + hoje + '</lastmod>');
+  if (novo !== xml) await writeFile(caminho, novo, 'utf8');
+}
+
 async function main() {
   console.log('Baixando CSV da ANEEL...');
   const resposta = await fetch(URL_CSV);
@@ -197,6 +210,7 @@ async function main() {
 
   await writeFile(join(RAIZ, 'data', 'bandeiras.json'), json, 'utf8');
   await atualizarFallbackHTML(json);
+  await atualizarSitemap();
 
   const v = dados.vigente;
   console.log('OK — ' + dados.meses.length + ' meses (' +
