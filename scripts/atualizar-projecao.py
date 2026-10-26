@@ -39,7 +39,7 @@ MESES = {
     "dezembro": 12,
 }
 
-RE_EDICAO = re.compile(r"(\d+)\s*(?:º|°|o)\s*Encontro\s+do\s+PLD", re.IGNORECASE)
+RE_EDICAO = re.compile(r"(\d+)\s*(?:º|°|o)\.?\s*Encontro\s+do\s+PLD", re.IGNORECASE)
 RE_MES = re.compile(
     r"Encontro\s+do\s+PLD\s*-\s*([A-Za-zÀ-ÿ]+)\s+de\s+(\d{4})\.pdf", re.IGNORECASE
 )
@@ -93,7 +93,7 @@ def descobrir_ultima_edicao():
                 href = link.get("h") or ""
                 if "/documents/" not in href:
                     continue
-                texto = unquote(href)
+                texto = unquote(href).replace("_", " ")
                 if "Encontro do PLD" not in texto:
                     continue
                 edicao = RE_EDICAO.search(texto)
@@ -107,7 +107,7 @@ def descobrir_ultima_edicao():
                 )
 
             numero, href = max(candidatos, key=lambda c: c[0])
-            texto = unquote(href)
+            texto = unquote(href).replace("_", " ")
             mes = RE_MES.search(texto)
             if not mes or mes.group(1).lower() not in MESES:
                 raise RuntimeError("Mês/ano da edição não identificado no link: " + texto)
