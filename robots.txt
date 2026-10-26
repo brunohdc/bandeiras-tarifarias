@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://brunohdc.github.io/bandeiras-tarifarias/sitemap.xml

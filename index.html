@@ -4,8 +4,100 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Histórico das bandeiras tarifárias — ANEEL (2015 a 2026)</title>
-<meta name="description" content="Bandeira tarifária vigente e histórico mensal das bandeiras tarifárias de energia elétrica no Brasil desde janeiro de 2015: gráfico por ano, resumo anual e tabela completa. Dados oficiais da ANEEL.">
-<link rel="stylesheet" href="bandeiras.css?v=1">
+<meta name="description" content="Bandeira tarifária vigente, histórico mensal desde janeiro de 2015 e calendário de divulgação da ANEEL: gráfico por ano, resumo anual e tabela completa. Dados oficiais da ANEEL.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://brunohdc.github.io/bandeiras-tarifarias/">
+<meta name="theme-color" content="#0a4d8c">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-96.png" sizes="96x96" type="image/png">
+
+<!-- Open Graph e Twitter Card -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Histórico das bandeiras tarifárias">
+<meta property="og:title" content="Histórico das bandeiras tarifárias — ANEEL">
+<meta property="og:description" content="Bandeira vigente, calendário de divulgação e série mensal das bandeiras tarifárias desde 2015. Dados oficiais da ANEEL.">
+<meta property="og:url" content="https://brunohdc.github.io/bandeiras-tarifarias/">
+<meta property="og:image" content="https://brunohdc.github.io/bandeiras-tarifarias/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Histórico das bandeiras tarifárias — dados da ANEEL desde 2015">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Histórico das bandeiras tarifárias — ANEEL">
+<meta name="twitter:description" content="Bandeira vigente, calendário de divulgação e série mensal desde 2015 — dados da ANEEL.">
+<meta name="twitter:image" content="https://brunohdc.github.io/bandeiras-tarifarias/og-image.png">
+
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="stylesheet" href="bandeiras.css?v=3">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L1BM28TN18"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-L1BM28TN18');
+</script>
+
+<!-- Dados estruturados para buscadores e ferramentas de IA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://brunohdc.github.io/bandeiras-tarifarias/#website",
+      "url": "https://brunohdc.github.io/bandeiras-tarifarias/",
+      "name": "Histórico das bandeiras tarifárias — ANEEL",
+      "description": "Consulta independente sobre as bandeiras tarifárias de energia elétrica no Brasil, com série mensal desde janeiro de 2015.",
+      "inLanguage": "pt-BR"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://brunohdc.github.io/bandeiras-tarifarias/#webpage",
+      "url": "https://brunohdc.github.io/bandeiras-tarifarias/",
+      "name": "Histórico das bandeiras tarifárias — ANEEL (2015 a 2026)",
+      "description": "Bandeira tarifária vigente, histórico mensal desde 2015, calendário de divulgação, gráfico por ano e tabela completa. Dados oficiais da ANEEL.",
+      "isPartOf": { "@id": "https://brunohdc.github.io/bandeiras-tarifarias/#website" },
+      "inLanguage": "pt-BR",
+      "dateModified": "2026-10-26",
+      "about": { "@id": "https://brunohdc.github.io/bandeiras-tarifarias/#dataset" }
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://brunohdc.github.io/bandeiras-tarifarias/#dataset",
+      "name": "Histórico mensal das bandeiras tarifárias no Brasil",
+      "description": "Série mensal da bandeira tarifária acionada e do adicional em R$/MWh, de janeiro de 2015 até o mês mais recente publicado pela ANEEL, com resumo anual e calendário de divulgação.",
+      "url": "https://brunohdc.github.io/bandeiras-tarifarias/",
+      "license": "https://opendatacommons.org/licenses/odbl/1-0/",
+      "creator": {
+        "@type": "GovernmentOrganization",
+        "name": "Agência Nacional de Energia Elétrica (ANEEL)",
+        "url": "https://www.gov.br/aneel/"
+      },
+      "temporalCoverage": "2015-01/..",
+      "spatialCoverage": { "@type": "Place", "name": "Brasil" },
+      "isBasedOn": "https://dadosabertos.aneel.gov.br/dataset/bandeiras-tarifarias",
+      "distribution": [
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://brunohdc.github.io/bandeiras-tarifarias/data/bandeiras.json"
+        },
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://brunohdc.github.io/bandeiras-tarifarias/data/agenda.json"
+        }
+      ],
+      "variableMeasured": [
+        { "@type": "PropertyValue", "name": "Bandeira tarifária" },
+        { "@type": "PropertyValue", "name": "Adicional da bandeira", "unitText": "BRL/MWh" }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -22,8 +114,11 @@
 <main id="conteudo" class="conteiner">
 
   <noscript>
-    <p class="estimativa-vazia">Esta página usa JavaScript para desenhar o gráfico e as tabelas.
-      Sem ele, consulte o
+    <p class="estimativa-vazia">
+      Esta página usa JavaScript para desenhar o gráfico e as tabelas. Os dados completos estão em
+      <a href="data/bandeiras.json">data/bandeiras.json</a> (série mensal) e
+      <a href="data/agenda.json">data/agenda.json</a> (calendário de divulgação).
+      A fonte original é o
       <a href="https://dadosabertos.aneel.gov.br/dataset/bandeiras-tarifarias" rel="noopener" target="_blank">conjunto de dados da ANEEL<span class="externo"> (site externo)</span></a>.
     </p>
   </noscript>
@@ -71,7 +166,42 @@
     </p>
   </section>
 
-  <!-- 2. GRÁFICO POR ANO -->
+  <!-- 2. AGENDA DE DIVULGAÇÃO -->
+  <section class="cartao" aria-labelledby="titulo-agenda">
+    <h2 id="titulo-agenda">Agenda de divulgação <span class="agenda-ano" id="agenda-ano"></span></h2>
+    <p class="instrucao">
+      A ANEEL divulga a bandeira de cada mês no fim do mês anterior, em data definida no
+      calendário oficial. A cor passa a valer no primeiro dia do mês de referência.
+    </p>
+
+    <div class="agenda-proxima" id="agenda-proxima" hidden>
+      <p class="agenda-proxima-rotulo">Próxima divulgação</p>
+      <p class="agenda-proxima-data"><time id="agenda-proxima-data"></time></p>
+      <p class="agenda-proxima-detalhe" id="agenda-proxima-detalhe"></p>
+    </div>
+
+    <div class="tabela-rolagem" tabindex="0" role="region" aria-labelledby="titulo-agenda">
+      <table class="tabela tabela-agenda">
+        <caption class="sr-only">Calendário de divulgação das bandeiras tarifárias: data do anúncio, mês de vigência e bandeira divulgada</caption>
+        <thead>
+          <tr>
+            <th scope="col">Divulgação</th>
+            <th scope="col">Mês de vigência</th>
+            <th scope="col">Bandeira</th>
+          </tr>
+        </thead>
+        <tbody id="corpo-agenda"></tbody>
+      </table>
+    </div>
+
+    <p class="aviso-suave" id="agenda-nota" hidden></p>
+
+    <p class="fonte">
+      Fonte: <a id="agenda-fonte" href="https://www.gov.br/aneel/pt-br/calendario-de-atividades/acionamento-bandeiras" rel="noopener" target="_blank">ANEEL — Calendário de acionamento das bandeiras tarifárias<span class="externo"> (site externo)</span></a>
+    </p>
+  </section>
+
+  <!-- 3. GRÁFICO POR ANO -->
   <section class="cartao" aria-labelledby="titulo-grafico">
     <h2 id="titulo-grafico">Bandeiras mês a mês</h2>
     <p class="instrucao">
@@ -115,7 +245,7 @@
     </p>
   </section>
 
-  <!-- 3. RESUMO POR ANO -->
+  <!-- 4. RESUMO POR ANO -->
   <section class="cartao" aria-labelledby="titulo-resumo">
     <h2 id="titulo-resumo">Resumo por ano</h2>
     <p class="instrucao">Quantidade de meses em cada bandeira, ano a ano.</p>
@@ -141,13 +271,13 @@
     <p class="aviso-suave" id="resumo-nota"></p>
   </section>
 
-  <!-- 4. DICIONÁRIO DE BANDEIRAS -->
+  <!-- 5. DICIONÁRIO DE BANDEIRAS -->
   <section class="cartao" aria-labelledby="titulo-dicionario">
     <h2 id="titulo-dicionario">O que é cada bandeira</h2>
     <ul class="lista-bandeiras" id="lista-bandeiras"></ul>
   </section>
 
-  <!-- 5. AVISOS -->
+  <!-- 6. AVISOS -->
   <section class="cartao cartao-aviso" aria-labelledby="titulo-avisos">
     <h2 id="titulo-avisos">Como ler estes dados</h2>
     <ul class="lista-avisos">
@@ -170,6 +300,10 @@
       <a href="https://dadosabertos.aneel.gov.br/dataset/bandeiras-tarifarias" rel="noopener" target="_blank">Agência Nacional de Energia Elétrica (ANEEL)<span class="externo"> (site externo)</span></a>,
       publicados sob licença ODbL. Os valores têm caráter informativo e não substituem a fatura
       da sua distribuidora.
+    </p>
+    <p class="rodape-nota rodape-analytics">
+      Esta página usa o Google Analytics para medir audiência (visitas e tempo de permanência)
+      de forma agregada, sem fins publicitários.
     </p>
   </div>
 </footer>
@@ -1366,6 +1500,34 @@
 }
 </script>
 
-<script src="bandeiras.js?v=1"></script>
+<!-- Agenda oficial de divulgação das bandeiras (fallback caso o fetch de data/agenda.json falhe).
+     Atualizar quando a ANEEL publicar o calendário do ano seguinte. -->
+<script type="application/json" id="agenda-fallback">
+{
+  "ano": 2026,
+  "fonte": {
+    "nome": "ANEEL — Calendário de acionamento das bandeiras tarifárias",
+    "url": "https://www.gov.br/aneel/pt-br/calendario-de-atividades/acionamento-bandeiras",
+    "noticia": "https://www.gov.br/aneel/pt-br/assuntos/noticias/2026/bandeira-tarifaria-aneel-divulga-calendario-de-acionamento-para-2026",
+    "publicadoEm": "2026-01-08"
+  },
+  "divulgacoes": [
+    { "data": "2026-01-30", "competencia": "2026-02" },
+    { "data": "2026-02-27", "competencia": "2026-03" },
+    { "data": "2026-03-27", "competencia": "2026-04" },
+    { "data": "2026-04-24", "competencia": "2026-05" },
+    { "data": "2026-05-29", "competencia": "2026-06" },
+    { "data": "2026-06-26", "competencia": "2026-07" },
+    { "data": "2026-07-31", "competencia": "2026-08" },
+    { "data": "2026-08-28", "competencia": "2026-09" },
+    { "data": "2026-09-25", "competencia": "2026-10" },
+    { "data": "2026-10-30", "competencia": "2026-11" },
+    { "data": "2026-11-27", "competencia": "2026-12" },
+    { "data": "2026-12-23", "competencia": "2027-01" }
+  ]
+}
+</script>
+
+<script src="bandeiras.js?v=2"></script>
 </body>
 </html>

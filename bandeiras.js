@@ -131,7 +131,123 @@
     }
   }
 
-  /* ---------- 2. Gráfico ---------- */
+  /* ---------- 2. Agenda de divulgação ---------- */
+  var DATA_COM_DIA = new Intl.DateTimeFormat('pt-BR', {
+    weekday: 'long', day: '2-digit', month: 'long', year: 'numeric', timeZone: 'UTC'
+  });
+
+  function dataCurta(iso) {
+    if (!iso) return '—';
+    return iso.slice(8, 10) + '/' + iso.slice(5, 7) + '/' + iso.slice(0, 4);
+  }
+  function dataLongaComDia(iso) {
+    if (!iso) return '—';
+    var d = new Date(iso + 'T00:00:00Z');
+    return isNaN(d.getTime()) ? '—' : primeiraMaiuscula(DATA_COM_DIA.format(d));
+  }
+  function hojeISO() {
+    var d = new Date();
+    return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+  }
+  function diasAte(iso) {
+    var hoje = new Date(hojeISO() + 'T00:00:00Z');
+    var alvo = new Date(iso + 'T00:00:00Z');
+    return Math.round((alvo.getTime() - hoje.getTime()) / 86400000);
+  }
+  function quandoRelativo(dias) {
+    if (dias === 0) return 'hoje';
+    if (dias === 1) return 'amanhã';
+    return 'em ' + dias + ' dias';
+  }
+
+  function renderAgenda(dados, agenda) {
+    var secao = $('titulo-agenda').closest('.cartao');
+    if (!agenda || !agenda.divulgacoes || !agenda.divulgacoes.length) {
+      secao.hidden = true;
+      return;
+    }
+
+    var porCompetencia = {};
+    dados.meses.forEach(function (mes) { porCompetencia[mes.competencia] = mes; });
+
+    var lista = agenda.divulgacoes.slice().sort(function (a, b) {
+      return a.data < b.data ? -1 : 1;
+    });
+    var hoje = hojeISO();
+    var anoAtual = String(new Date().getFullYear());
+
+    $('agenda-ano').textContent = '· ' + agenda.ano;
+
+    var nota = $('agenda-nota');
+    if (String(agenda.ano) < anoAtual) {
+      nota.hidden = false;
+      nota.textContent = 'Este é o calendário de ' + agenda.ano +
+        '. Consulte o calendário oficial para as datas de ' + anoAtual + '.';
+    } else {
+      nota.hidden = true;
+      nota.textContent = '';
+    }
+
+    var proxima = null;
+    for (var i = 0; i < lista.length; i++) {
+      if (lista[i].data >= hoje) { proxima = lista[i]; break; }
+    }
+
+    if (proxima) {
+      var mesProximo = porCompetencia[proxima.competencia];
+      var rel = quandoRelativo(diasAte(proxima.data));
+      var tempo = $('agenda-proxima-data');
+      tempo.setAttribute('datetime', proxima.data);
+      tempo.textContent = dataLongaComDia(proxima.data);
+      $('agenda-proxima-detalhe').textContent =
+        'Bandeira de ' + rotuloLongo(proxima.competencia).toLowerCase() + ' · ' +
+        (mesProximo ? mesProximo.bandeira : 'a divulgar') +
+        (rel ? ' (' + rel + ')' : '');
+      $('agenda-proxima').hidden = false;
+    } else {
+      $('agenda-proxima').hidden = true;
+    }
+
+    var tbody = $('corpo-agenda');
+    tbody.textContent = '';
+
+    lista.forEach(function (item) {
+      var tr = document.createElement('tr');
+      if (proxima && item.data === proxima.data) tr.className = 'linha-proxima';
+
+      var tdData = document.createElement('td');
+      var time = document.createElement('time');
+      time.setAttribute('datetime', item.data);
+      time.textContent = dataCurta(item.data);
+      tdData.appendChild(time);
+      tr.appendChild(tdData);
+
+      var tdMes = document.createElement('td');
+      tdMes.textContent = rotuloLongo(item.competencia);
+      tr.appendChild(tdMes);
+
+      var tdFlag = document.createElement('td');
+      var mes = porCompetencia[item.competencia];
+      if (mes) {
+        var selo = document.createElement('span');
+        selo.className = 'selo selo-' + mes.chave;
+        selo.textContent = mes.bandeira;
+        tdFlag.appendChild(selo);
+      } else {
+        var pendente = document.createElement('span');
+        pendente.className = 'pendente';
+        pendente.textContent = 'A divulgar';
+        tdFlag.appendChild(pendente);
+      }
+      tr.appendChild(tdFlag);
+
+      tbody.appendChild(tr);
+    });
+
+    if (agenda.fonte) montarLink($('agenda-fonte'), agenda.fonte.url, agenda.fonte.nome);
+  }
+
+  /* ---------- 3. Gráfico ---------- */
   var G = { W: 760, H: 420, top: 20, right: 48, bottom: 44, left: 124 };
 
   function geometria() {
@@ -416,7 +532,7 @@
     $('dica').hidden = true;
   }
 
-  /* ---------- 3. Resumo por ano ---------- */
+  /* ---------- 4. Resumo por ano ---------- */
   function renderResumo(dados) {
     resumoAno = {};
     dados.meses.forEach(function (mes) {
@@ -468,7 +584,7 @@
     }
   }
 
-  /* ---------- 4. Tabela mês a mês ---------- */
+  /* ---------- 5. Tabela mês a mês ---------- */
   function renderTabelaMeses(dados) {
     var tbody = $('corpo-meses');
     tbody.textContent = '';
@@ -496,7 +612,7 @@
     });
   }
 
-  /* ---------- 5. Dicionário ---------- */
+  /* ---------- 6. Dicionário ---------- */
   function renderLista(dados) {
     var ul = $('lista-bandeiras');
     ul.textContent = '';
@@ -526,12 +642,13 @@
   }
 
   /* ---------- Inicialização ---------- */
-  function render(dados) {
+  function render(dados, agenda) {
     if (!dados || !dados.meses || !dados.meses.length || !dados.vigente) {
       throw new Error('JSON de dados incompleto');
     }
     dadosAtuais = dados;
     renderVigente(dados);
+    renderAgenda(dados, agenda);
     renderResumo(dados);
     renderGrafico(dados);
     renderTabelaMeses(dados);
@@ -541,6 +658,12 @@
 
   function lerFallback() {
     return JSON.parse($('dados-fallback').textContent);
+  }
+
+  function lerAgendaFallback() {
+    var el = $('agenda-fallback');
+    if (!el) throw new Error('Agenda sem fallback');
+    return JSON.parse(el.textContent);
   }
 
   function carregar() {
@@ -555,9 +678,24 @@
       .catch(function () { return lerFallback(); });
   }
 
+  function carregarAgenda() {
+    if (location.protocol === 'file:') {
+      return Promise.resolve(lerAgendaFallback());
+    }
+    return fetch('data/agenda.json', { cache: 'no-store' })
+      .then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      })
+      .catch(function () { return lerAgendaFallback(); });
+  }
+
   function iniciar() {
-    carregar()
-      .then(render)
+    Promise.all([
+      carregar(),
+      carregarAgenda().catch(function () { return null; })
+    ])
+      .then(function (res) { render(res[0], res[1]); })
       .catch(function (erro) {
         if (window.console) console.error(erro);
         $('erro-carga').hidden = false;

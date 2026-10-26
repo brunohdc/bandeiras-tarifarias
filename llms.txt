@@ -1,0 +1,21 @@
+# Histórico das bandeiras tarifárias — ANEEL
+
+> Consulta independente sobre as bandeiras tarifárias de energia elétrica no Brasil: bandeira vigente, série mensal desde janeiro de 2015, resumo por ano e calendário oficial de divulgação da ANEEL.
+
+## Dados
+
+- [Bandeiras mensais (JSON)](https://brunohdc.github.io/bandeiras-tarifarias/data/bandeiras.json): série completa com bandeira, severidade e adicional em R$/MWh e R$/kWh.
+- [Agenda de divulgação (JSON)](https://brunohdc.github.io/bandeiras-tarifarias/data/agenda.json): datas em que a ANEEL anuncia a bandeira do mês seguinte.
+
+## Fatos principais
+
+- A bandeira tarifária é um adicional cobrado por kWh consumido, definido mensalmente pela ANEEL; não substitui a tarifa.
+- A série começa em janeiro de 2015 e é atualizada automaticamente a partir dos dados abertos da ANEEL.
+- Bandeiras: verde (sem acréscimo), amarela, vermelha patamar 1, vermelha patamar 2 e escassez hídrica (setembro de 2021 a abril de 2022).
+- Unidades com consumo igual ou inferior a 30 kWh no mês são isentas do adicional (Resolução ANEEL nº 1.000/2021).
+- Os valores publicados são sem tributos; ICMS, PIS/COFINS e outros encargos aparecem separadamente na fatura.
+
+## Fonte
+
+- ANEEL — Dados Abertos: Bandeiras Tarifárias: https://dadosabertos.aneel.gov.br/dataset/bandeiras-tarifarias
+- Licença dos dados: ODbL (Open Data Commons Open Database License).

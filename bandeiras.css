@@ -354,6 +354,49 @@ a:hover { color: var(--cor-primaria-escura); }
   border-color: var(--cor-primaria);
 }
 
+/* ---------- Agenda de divulgação ---------- */
+.agenda-ano {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--cor-texto-suave);
+}
+
+.agenda-proxima {
+  margin: 0 0 var(--espaco-4);
+  padding: var(--espaco-3) var(--espaco-4);
+  background: var(--cor-destaque-fundo);
+  border: 1px solid var(--cor-destaque-borda);
+  border-radius: var(--raio);
+}
+.agenda-proxima-rotulo {
+  margin: 0 0 var(--espaco-1);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cor-texto-suave);
+}
+.agenda-proxima-data {
+  margin: 0 0 var(--espaco-1);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.agenda-proxima-detalhe {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--cor-texto-suave);
+}
+
+.tabela-agenda td:first-child { white-space: nowrap; }
+.tabela-agenda .pendente {
+  font-size: 0.875rem;
+  font-style: italic;
+  color: var(--cor-texto-suave);
+}
+.tabela-agenda .linha-proxima { background: var(--cor-destaque-fundo); }
+.tabela-agenda .linha-proxima td { border-bottom-color: var(--cor-destaque-borda); }
+
 /* ---------- Gráfico ---------- */
 .grafico-rolagem {
   overflow-x: auto;
@@ -563,6 +606,7 @@ a:hover { color: var(--cor-primaria-escura); }
 }
 .verificado { margin-bottom: var(--espaco-3); font-size: 0.9375rem; }
 .rodape-nota { margin: 0; }
+.rodape-analytics { margin-top: var(--espaco-3); }
 
 /* ---------- Movimento reduzido ---------- */
 @media (prefers-reduced-motion: reduce) {
@@ -579,5 +623,6 @@ a:hover { color: var(--cor-primaria-escura); }
   body { background: #fff; }
   .skip-link, .estimativa-vazia, .chips { display: none; }
   .cartao { border: 1px solid #999; break-inside: avoid; }
+  .agenda-proxima { break-inside: avoid; }
   .grafico-rolagem { overflow: visible; }
 }

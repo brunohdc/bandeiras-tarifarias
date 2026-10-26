@@ -1,0 +1,23 @@
+{
+  "ano": 2026,
+  "fonte": {
+    "nome": "ANEEL — Calendário de acionamento das bandeiras tarifárias",
+    "url": "https://www.gov.br/aneel/pt-br/calendario-de-atividades/acionamento-bandeiras",
+    "noticia": "https://www.gov.br/aneel/pt-br/assuntos/noticias/2026/bandeira-tarifaria-aneel-divulga-calendario-de-acionamento-para-2026",
+    "publicadoEm": "2026-01-08"
+  },
+  "divulgacoes": [
+    { "data": "2026-01-30", "competencia": "2026-02" },
+    { "data": "2026-02-27", "competencia": "2026-03" },
+    { "data": "2026-03-27", "competencia": "2026-04" },
+    { "data": "2026-04-24", "competencia": "2026-05" },
+    { "data": "2026-05-29", "competencia": "2026-06" },
+    { "data": "2026-06-26", "competencia": "2026-07" },
+    { "data": "2026-07-31", "competencia": "2026-08" },
+    { "data": "2026-08-28", "competencia": "2026-09" },
+    { "data": "2026-09-25", "competencia": "2026-10" },
+    { "data": "2026-10-30", "competencia": "2026-11" },
+    { "data": "2026-11-27", "competencia": "2026-12" },
+    { "data": "2026-12-23", "competencia": "2027-01" }
+  ]
+}
