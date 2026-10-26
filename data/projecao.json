@@ -4,10 +4,11 @@
   "url": "https://www.ccee.org.br/documents/80415/37596255/140%C2%BA%20Encontro%20do%20PLD%20-%20Outubro%20de%202026.pdf/09509df2-f0f5-67d8-59c1-3dfb49baec0c",
   "pagina": 97,
   "resumoEdicao": "140º Encontro do PLD",
-  "resumo": "No cenário principal (RNA), a CCEE projeta o PLD gatilho no piso de R$ 57,31/MWh em todos os meses de novembro de 2026 a dezembro de 2027 — faixa da bandeira verde.",
+  "resumo": "Pelo cenário principal (RNA), a CCEE projeta bandeira verde para o período de novembro de 2026 a dezembro de 2027.",
   "destaques": [
-    "Sensibilidade 2 (SMAP 2018): projeta alta a partir de julho de 2027, chegando a R$ 785,27/MWh em dezembro de 2027; nos meses anteriores, fica próxima do piso.",
-    "São cenários de projeção: a bandeira de cada mês é definida oficialmente pela ANEEL no fim do mês anterior."
+    "PLD gatilho no piso de R$ 57,31/MWh em todos os meses do horizonte projetado.",
+    "Sensibilidade 2 (SMAP 2018): projeta alta a partir de julho de 2027, chegando a R$ 785,27/MWh em dezembro de 2027; nos meses anteriores, fica próxima do piso."
   ],
+  "ressalva": "São cenários de projeção: a bandeira de cada mês é definida oficialmente pela ANEEL no fim do mês anterior.",
   "atualizadoEm": "2026-10-26"
 }

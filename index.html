@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-visao="resumida">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,7 +28,14 @@
 <meta name="twitter:image" content="https://brunohdc.github.io/bandeiras-tarifarias/og-image.png">
 
 <link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="stylesheet" href="bandeiras.css?v=5">
+<script>
+  try {
+    if (localStorage.getItem('visao-bandeiras') === 'detalhada' || location.hash === '#passado') {
+      document.documentElement.setAttribute('data-visao', 'detalhada');
+    }
+  } catch (e) {}
+</script>
+<link rel="stylesheet" href="bandeiras.css?v=7">
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-L1BM28TN18"></script>
@@ -134,6 +141,11 @@
     <a href="https://dadosabertos.aneel.gov.br/dataset/bandeiras-tarifarias" rel="noopener" target="_blank">portal de dados abertos da ANEEL<span class="externo"> (site externo)</span></a>.
   </p>
 
+  <div class="visao" role="group" aria-label="Nível de detalhe da página">
+    <button type="button" class="visao-botao" data-visao="resumida" aria-pressed="true">Resumida</button>
+    <button type="button" class="visao-botao" data-visao="detalhada" aria-pressed="false">Detalhada</button>
+  </div>
+
   <p class="marcador" id="atual">Atual</p>
 
   <!-- 1. BANDEIRA VIGENTE -->
@@ -144,9 +156,9 @@
       <span id="vig-icone" class="bandeira-icone" aria-hidden="true"></span>
       <span class="bandeira-nome">Bandeira <strong id="vig-nome">—</strong></span>
     </p>
-    <p class="bandeira-descricao" id="vig-descricao">Condições favoráveis de geração de energia.</p>
+    <p class="bandeira-descricao so-detalhado" id="vig-descricao">Condições favoráveis de geração de energia.</p>
 
-    <dl class="detalhes">
+    <dl class="detalhes so-detalhado">
       <div>
         <dt>Mês de referência</dt>
         <dd id="vig-mes">—</dd>
@@ -165,9 +177,9 @@
       </div>
     </dl>
 
-    <p class="aviso-suave" id="vig-aviso" hidden></p>
+    <p class="aviso-suave so-detalhado" id="vig-aviso" hidden></p>
 
-    <p class="fonte">
+    <p class="fonte so-detalhado">
       Fonte: <a id="vig-fonte" href="https://dadosabertos.aneel.gov.br/dataset/bandeiras-tarifarias" rel="noopener" target="_blank">ANEEL — Dados Abertos: Bandeiras Tarifárias<span class="externo"> (site externo)</span></a>
       <span class="resolucao" id="vig-serie"></span>
     </p>
@@ -176,7 +188,7 @@
   <!-- 2. AGENDA DE DIVULGAÇÃO -->
   <section class="cartao" aria-labelledby="titulo-agenda">
     <h2 id="titulo-agenda">Agenda de divulgação <span class="agenda-ano" id="agenda-ano"></span></h2>
-    <p class="instrucao">
+    <p class="instrucao so-detalhado">
       A ANEEL divulga a bandeira de cada mês no fim do mês anterior, em data definida no
       calendário oficial. A cor passa a valer no primeiro dia do mês de referência.
     </p>
@@ -187,7 +199,7 @@
       <p class="agenda-proxima-detalhe" id="agenda-proxima-detalhe"></p>
     </div>
 
-    <div class="tabela-rolagem" tabindex="0" role="region" aria-labelledby="titulo-agenda">
+    <div class="tabela-rolagem so-detalhado" tabindex="0" role="region" aria-labelledby="titulo-agenda">
       <table class="tabela tabela-agenda">
         <caption class="sr-only">Calendário de divulgação das bandeiras tarifárias: data do anúncio, mês de vigência e bandeira divulgada</caption>
         <thead>
@@ -203,7 +215,7 @@
 
     <p class="aviso-suave" id="agenda-nota" hidden></p>
 
-    <p class="fonte">
+    <p class="fonte so-detalhado">
       Fonte: <a id="agenda-fonte" href="https://www.gov.br/aneel/pt-br/calendario-de-atividades/acionamento-bandeiras" rel="noopener" target="_blank">ANEEL — Calendário de acionamento das bandeiras tarifárias<span class="externo"> (site externo)</span></a>
     </p>
   </section>
@@ -213,15 +225,16 @@
   <!-- 3. PROJEÇÃO DA CCEE -->
   <section class="cartao" aria-labelledby="titulo-projecao">
     <h2 id="titulo-projecao">Projeção da CCEE</h2>
-    <p class="instrucao">
+    <p class="instrucao so-detalhado">
       A CCEE apresenta no Encontro do PLD uma projeção da bandeira tarifária para os meses
       seguintes. Resumo da última edição disponível:
     </p>
 
     <div class="projecao-resumo">
-      <p class="projecao-edicao" id="projecao-edicao"></p>
+      <p class="projecao-edicao so-detalhado" id="projecao-edicao"></p>
       <p class="projecao-texto" id="projecao-texto"></p>
-      <ul class="projecao-destaques" id="projecao-destaques"></ul>
+      <ul class="projecao-destaques so-detalhado" id="projecao-destaques"></ul>
+      <p class="projecao-ressalva" id="projecao-ressalva"></p>
     </div>
 
     <p class="projecao-aviso" id="projecao-aviso" hidden></p>
@@ -232,10 +245,10 @@
     </p>
   </section>
 
-  <p class="marcador" id="passado">Passado</p>
+  <p class="marcador so-detalhado" id="passado">Passado</p>
 
   <!-- 4. GRÁFICO POR ANO -->
-  <section class="cartao" aria-labelledby="titulo-grafico">
+  <section class="cartao so-detalhado" aria-labelledby="titulo-grafico">
     <h2 id="titulo-grafico">Bandeiras mês a mês</h2>
     <p class="instrucao">
       Cada linha representa um ano e cada ponto um mês: a altura do ponto indica a bandeira
@@ -279,7 +292,7 @@
   </section>
 
   <!-- 5. RESUMO POR ANO -->
-  <section class="cartao" aria-labelledby="titulo-resumo">
+  <section class="cartao so-detalhado" aria-labelledby="titulo-resumo">
     <h2 id="titulo-resumo">Resumo por ano</h2>
     <p class="instrucao">Quantidade de meses em cada bandeira, ano a ano.</p>
 
@@ -311,7 +324,7 @@
   </section>
 
   <!-- 7. AVISOS -->
-  <section class="cartao cartao-aviso" aria-labelledby="titulo-avisos">
+  <section class="cartao cartao-aviso so-detalhado" aria-labelledby="titulo-avisos">
     <h2 id="titulo-avisos">Como ler estes dados</h2>
     <ul class="lista-avisos">
       <li>A bandeira tarifária é um <strong>adicional</strong> cobrado por kWh consumido. Ela não substitui a tarifa: é somada a ela.</li>
@@ -1570,15 +1583,16 @@
   "url": "https://www.ccee.org.br/documents/80415/37596255/140%C2%BA%20Encontro%20do%20PLD%20-%20Outubro%20de%202026.pdf/09509df2-f0f5-67d8-59c1-3dfb49baec0c",
   "pagina": 97,
   "resumoEdicao": "140º Encontro do PLD",
-  "resumo": "No cenário principal (RNA), a CCEE projeta o PLD gatilho no piso de R$ 57,31/MWh em todos os meses de novembro de 2026 a dezembro de 2027 — faixa da bandeira verde.",
+  "resumo": "Pelo cenário principal (RNA), a CCEE projeta bandeira verde para o período de novembro de 2026 a dezembro de 2027.",
   "destaques": [
-    "Sensibilidade 2 (SMAP 2018): projeta alta a partir de julho de 2027, chegando a R$ 785,27/MWh em dezembro de 2027; nos meses anteriores, fica próxima do piso.",
-    "São cenários de projeção: a bandeira de cada mês é definida oficialmente pela ANEEL no fim do mês anterior."
+    "PLD gatilho no piso de R$ 57,31/MWh em todos os meses do horizonte projetado.",
+    "Sensibilidade 2 (SMAP 2018): projeta alta a partir de julho de 2027, chegando a R$ 785,27/MWh em dezembro de 2027; nos meses anteriores, fica próxima do piso."
   ],
+  "ressalva": "São cenários de projeção: a bandeira de cada mês é definida oficialmente pela ANEEL no fim do mês anterior.",
   "atualizadoEm": "2026-10-26"
 }
 </script>
 
-<script src="bandeiras.js?v=3"></script>
+<script src="bandeiras.js?v=7"></script>
 </body>
 </html>

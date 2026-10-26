@@ -197,6 +197,41 @@ a:hover { color: var(--cor-primaria-escura); }
   max-width: 44rem;
 }
 
+/* ---------- Seletor de visão ---------- */
+.visao {
+  display: inline-flex;
+  gap: 2px;
+  margin: 0 0 var(--espaco-3);
+  padding: 2px;
+  background: var(--cor-fundo-alt);
+  border: 1px solid var(--cor-borda);
+  border-radius: 999px;
+}
+.visao-botao {
+  min-height: 2.25rem;
+  padding: var(--espaco-1) var(--espaco-3);
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--cor-texto-suave);
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.visao-botao:hover { color: var(--cor-primaria); }
+html[data-visao="resumida"] .visao-botao[data-visao="resumida"],
+html[data-visao="detalhada"] .visao-botao[data-visao="detalhada"] {
+  color: var(--cor-fundo);
+  background: var(--cor-primaria);
+}
+html[data-visao="resumida"] .visao-botao[data-visao="resumida"]:hover,
+html[data-visao="detalhada"] .visao-botao[data-visao="detalhada"]:hover {
+  color: var(--cor-fundo);
+}
+
+html[data-visao="resumida"] .so-detalhado { display: none; }
+
 /* ---------- Marcadores de seção ---------- */
 .marcador {
   margin: var(--espaco-6) 0 var(--espaco-3);
@@ -439,6 +474,11 @@ a:hover { color: var(--cor-primaria-escura); }
   display: grid;
   gap: var(--espaco-2);
   font-size: 0.9375rem;
+  color: var(--cor-texto-suave);
+}
+.projecao-ressalva {
+  margin: var(--espaco-2) 0 0;
+  font-size: 0.875rem;
   color: var(--cor-texto-suave);
 }
 .projecao-aviso {

@@ -269,6 +269,15 @@
       ul.appendChild(li);
     });
 
+    var ressalva = $('projecao-ressalva');
+    if (projecao.ressalva) {
+      ressalva.textContent = projecao.ressalva;
+      ressalva.hidden = false;
+    } else {
+      ressalva.textContent = '';
+      ressalva.hidden = true;
+    }
+
     var aviso = $('projecao-aviso');
     if (projecao.resumoEdicao && projecao.resumoEdicao !== projecao.edicao) {
       aviso.hidden = false;
@@ -691,6 +700,47 @@
     t.textContent = dataLonga(dados.fonte.atualizadoEm);
   }
 
+  /* ---------- Visão resumida / detalhada ---------- */
+  function aplicarVisao(visao, salvar) {
+    document.documentElement.setAttribute('data-visao', visao);
+
+    if (visao !== 'detalhada' && location.hash === '#passado') {
+      try {
+        history.replaceState(null, '', location.pathname + location.search);
+      } catch (e) {}
+    }
+
+    var botoes = document.querySelectorAll('.visao-botao');
+    for (var i = 0; i < botoes.length; i++) {
+      botoes[i].setAttribute(
+        'aria-pressed',
+        String(botoes[i].getAttribute('data-visao') === visao)
+      );
+    }
+
+    if (salvar === false) return;
+    try {
+      localStorage.setItem('visao-bandeiras', visao);
+    } catch (e) {}
+  }
+
+  function iniciarVisao() {
+    var botoes = document.querySelectorAll('.visao-botao');
+    for (var i = 0; i < botoes.length; i++) {
+      botoes[i].addEventListener('click', function () {
+        aplicarVisao(this.getAttribute('data-visao'));
+      });
+    }
+
+    if (location.hash === '#passado') {
+      aplicarVisao('detalhada', false);
+      return;
+    }
+
+    var visao = document.documentElement.getAttribute('data-visao') || 'resumida';
+    aplicarVisao(visao);
+  }
+
   /* ---------- Inicialização ---------- */
   function render(dados, agenda, projecao) {
     if (!dados || !dados.meses || !dados.meses.length || !dados.vigente) {
@@ -760,12 +810,19 @@
   }
 
   function iniciar() {
+    iniciarVisao();
     Promise.all([
       carregar(),
       carregarAgenda().catch(function () { return null; }),
       carregarProjecao().catch(function () { return null; })
     ])
-      .then(function (res) { render(res[0], res[1], res[2]); })
+      .then(function (res) {
+        render(res[0], res[1], res[2]);
+        if (location.hash === '#passado') {
+          var alvo = document.getElementById('passado');
+          if (alvo) alvo.scrollIntoView();
+        }
+      })
       .catch(function (erro) {
         if (window.console) console.error(erro);
         $('erro-carga').hidden = false;

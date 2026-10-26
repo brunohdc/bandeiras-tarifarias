@@ -163,6 +163,7 @@ def main():
     novo.setdefault("pagina", 0)
     novo.setdefault("resumo", "")
     novo.setdefault("destaques", [])
+    novo.setdefault("ressalva", "")
     novo.setdefault("resumoEdicao", edicao)
 
     desatualizado = novo.get("resumoEdicao") != edicao

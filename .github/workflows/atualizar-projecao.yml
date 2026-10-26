@@ -56,5 +56,5 @@ jobs:
             --search "Atualizar resumo da projeção da CCEE in:title" \
             --json number --jq 'length')
           if [ "$EXISTENTES" = "0" ]; then
-            gh issue create --title "$TITULO" --body "A CCEE publicou uma nova edição do Encontro do PLD. Atualize em \`data/projecao.json\` os campos \`resumo\`, \`destaques\`, \`pagina\`, \`resumoEdicao\` e \`atualizadoEm\` (e o fallback correspondente em \`index.html\`), depois feche esta issue."
+            gh issue create --title "$TITULO" --body "A CCEE publicou uma nova edição do Encontro do PLD. Atualize em \`data/projecao.json\` os campos \`resumo\`, \`destaques\`, \`ressalva\`, \`pagina\`, \`resumoEdicao\` e \`atualizadoEm\` (e o fallback correspondente em \`index.html\`), depois feche esta issue."
           fi
