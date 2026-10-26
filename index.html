@@ -28,7 +28,7 @@
 <meta name="twitter:image" content="https://brunohdc.github.io/bandeiras-tarifarias/og-image.png">
 
 <link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="stylesheet" href="bandeiras.css?v=3">
+<link rel="stylesheet" href="bandeiras.css?v=4">
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-L1BM28TN18"></script>
@@ -88,6 +88,11 @@
           "@type": "DataDownload",
           "encodingFormat": "application/json",
           "contentUrl": "https://brunohdc.github.io/bandeiras-tarifarias/data/agenda.json"
+        },
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://brunohdc.github.io/bandeiras-tarifarias/data/projecao.json"
         }
       ],
       "variableMeasured": [
@@ -201,7 +206,29 @@
     </p>
   </section>
 
-  <!-- 3. GRÁFICO POR ANO -->
+  <!-- 3. PROJEÇÃO DA CCEE -->
+  <section class="cartao" aria-labelledby="titulo-projecao">
+    <h2 id="titulo-projecao">Projeção da CCEE</h2>
+    <p class="instrucao">
+      A CCEE apresenta no Encontro do PLD uma projeção da bandeira tarifária para os meses
+      seguintes. Resumo da última edição disponível:
+    </p>
+
+    <div class="projecao-resumo">
+      <p class="projecao-edicao" id="projecao-edicao"></p>
+      <p class="projecao-texto" id="projecao-texto"></p>
+      <ul class="projecao-destaques" id="projecao-destaques"></ul>
+    </div>
+
+    <p class="projecao-aviso" id="projecao-aviso" hidden></p>
+
+    <p class="fonte">
+      Fonte: <a id="projecao-fonte" href="https://www.ccee.org.br/dados-e-analises/dados-pld" rel="noopener" target="_blank">CCEE — Encontro do PLD<span class="externo"> (PDF, site externo)</span></a>
+      · Resumo atualizado em <time id="projecao-atualizado"></time>
+    </p>
+  </section>
+
+  <!-- 4. GRÁFICO POR ANO -->
   <section class="cartao" aria-labelledby="titulo-grafico">
     <h2 id="titulo-grafico">Bandeiras mês a mês</h2>
     <p class="instrucao">
@@ -245,7 +272,7 @@
     </p>
   </section>
 
-  <!-- 4. RESUMO POR ANO -->
+  <!-- 5. RESUMO POR ANO -->
   <section class="cartao" aria-labelledby="titulo-resumo">
     <h2 id="titulo-resumo">Resumo por ano</h2>
     <p class="instrucao">Quantidade de meses em cada bandeira, ano a ano.</p>
@@ -271,13 +298,13 @@
     <p class="aviso-suave" id="resumo-nota"></p>
   </section>
 
-  <!-- 5. DICIONÁRIO DE BANDEIRAS -->
+  <!-- 6. DICIONÁRIO DE BANDEIRAS -->
   <section class="cartao" aria-labelledby="titulo-dicionario">
     <h2 id="titulo-dicionario">O que é cada bandeira</h2>
     <ul class="lista-bandeiras" id="lista-bandeiras"></ul>
   </section>
 
-  <!-- 6. AVISOS -->
+  <!-- 7. AVISOS -->
   <section class="cartao cartao-aviso" aria-labelledby="titulo-avisos">
     <h2 id="titulo-avisos">Como ler estes dados</h2>
     <ul class="lista-avisos">
@@ -1528,6 +1555,24 @@
 }
 </script>
 
-<script src="bandeiras.js?v=2"></script>
+<!-- Projeção da CCEE (fallback caso o fetch de data/projecao.json falhe).
+     O link/edição é atualizado automaticamente pela Action; o resumo é curado. -->
+<script type="application/json" id="projecao-fallback">
+{
+  "edicao": "140º Encontro do PLD",
+  "mes": "2026-10",
+  "url": "https://www.ccee.org.br/documents/80415/37596255/140%C2%BA%20Encontro%20do%20PLD%20-%20Outubro%20de%202026.pdf/09509df2-f0f5-67d8-59c1-3dfb49baec0c",
+  "pagina": 97,
+  "resumoEdicao": "140º Encontro do PLD",
+  "resumo": "No cenário principal (RNA), a CCEE projeta o PLD gatilho no piso de R$ 57,31/MWh em todos os meses de novembro de 2026 a dezembro de 2027 — faixa da bandeira verde.",
+  "destaques": [
+    "Sensibilidade 2 (SMAP 2018): projeta alta a partir de julho de 2027, chegando a R$ 785,27/MWh em dezembro de 2027; nos meses anteriores, fica próxima do piso.",
+    "São cenários de projeção: a bandeira de cada mês é definida oficialmente pela ANEEL no fim do mês anterior."
+  ],
+  "atualizadoEm": "2026-10-26"
+}
+</script>
+
+<script src="bandeiras.js?v=3"></script>
 </body>
 </html>

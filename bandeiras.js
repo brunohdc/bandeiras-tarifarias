@@ -247,7 +247,57 @@
     if (agenda.fonte) montarLink($('agenda-fonte'), agenda.fonte.url, agenda.fonte.nome);
   }
 
-  /* ---------- 3. Gráfico ---------- */
+  /* ---------- 3. Projeção da CCEE ---------- */
+  function renderProjecao(projecao) {
+    var secao = $('titulo-projecao').closest('.cartao');
+    if (!projecao || !projecao.resumo) {
+      secao.hidden = true;
+      return;
+    }
+
+    var rotuloMes = projecao.mes ? rotuloLongo(projecao.mes).toLowerCase() : '';
+    $('projecao-edicao').textContent =
+      projecao.edicao + (rotuloMes ? ' · ' + rotuloMes : '');
+
+    $('projecao-texto').textContent = projecao.resumo;
+
+    var ul = $('projecao-destaques');
+    ul.textContent = '';
+    (projecao.destaques || []).forEach(function (texto) {
+      var li = document.createElement('li');
+      li.textContent = texto;
+      ul.appendChild(li);
+    });
+
+    var aviso = $('projecao-aviso');
+    if (projecao.resumoEdicao && projecao.resumoEdicao !== projecao.edicao) {
+      aviso.hidden = false;
+      aviso.textContent = 'O resumo abaixo é da edição ' + projecao.resumoEdicao +
+        '. A CCEE já publicou a edição ' + projecao.edicao +
+        '; consulte o documento oficial para a projeção mais recente.';
+    } else {
+      aviso.hidden = true;
+      aviso.textContent = '';
+    }
+
+    var link = $('projecao-fonte');
+    if (projecao.url) {
+      var href = projecao.url;
+      if (projecao.pagina && href.indexOf('#') === -1) href += '#page=' + projecao.pagina;
+      link.setAttribute('href', href);
+    }
+    link.textContent = 'CCEE — ' + projecao.edicao;
+    var span = document.createElement('span');
+    span.className = 'externo';
+    span.textContent = ' (PDF, site externo)';
+    link.appendChild(span);
+
+    var atualizado = $('projecao-atualizado');
+    atualizado.setAttribute('datetime', projecao.atualizadoEm || '');
+    atualizado.textContent = dataLonga(projecao.atualizadoEm);
+  }
+
+  /* ---------- 4. Gráfico ---------- */
   var G = { W: 760, H: 420, top: 20, right: 48, bottom: 44, left: 124 };
 
   function geometria() {
@@ -532,7 +582,7 @@
     $('dica').hidden = true;
   }
 
-  /* ---------- 4. Resumo por ano ---------- */
+  /* ---------- 5. Resumo por ano ---------- */
   function renderResumo(dados) {
     resumoAno = {};
     dados.meses.forEach(function (mes) {
@@ -584,7 +634,7 @@
     }
   }
 
-  /* ---------- 5. Tabela mês a mês ---------- */
+  /* ---------- 6. Tabela mês a mês ---------- */
   function renderTabelaMeses(dados) {
     var tbody = $('corpo-meses');
     tbody.textContent = '';
@@ -612,7 +662,7 @@
     });
   }
 
-  /* ---------- 6. Dicionário ---------- */
+  /* ---------- 7. Dicionário ---------- */
   function renderLista(dados) {
     var ul = $('lista-bandeiras');
     ul.textContent = '';
@@ -642,13 +692,14 @@
   }
 
   /* ---------- Inicialização ---------- */
-  function render(dados, agenda) {
+  function render(dados, agenda, projecao) {
     if (!dados || !dados.meses || !dados.meses.length || !dados.vigente) {
       throw new Error('JSON de dados incompleto');
     }
     dadosAtuais = dados;
     renderVigente(dados);
     renderAgenda(dados, agenda);
+    renderProjecao(projecao);
     renderResumo(dados);
     renderGrafico(dados);
     renderTabelaMeses(dados);
@@ -663,6 +714,12 @@
   function lerAgendaFallback() {
     var el = $('agenda-fallback');
     if (!el) throw new Error('Agenda sem fallback');
+    return JSON.parse(el.textContent);
+  }
+
+  function lerProjecaoFallback() {
+    var el = $('projecao-fallback');
+    if (!el) throw new Error('Projeção sem fallback');
     return JSON.parse(el.textContent);
   }
 
@@ -690,12 +747,25 @@
       .catch(function () { return lerAgendaFallback(); });
   }
 
+  function carregarProjecao() {
+    if (location.protocol === 'file:') {
+      return Promise.resolve(lerProjecaoFallback());
+    }
+    return fetch('data/projecao.json', { cache: 'no-store' })
+      .then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      })
+      .catch(function () { return lerProjecaoFallback(); });
+  }
+
   function iniciar() {
     Promise.all([
       carregar(),
-      carregarAgenda().catch(function () { return null; })
+      carregarAgenda().catch(function () { return null; }),
+      carregarProjecao().catch(function () { return null; })
     ])
-      .then(function (res) { render(res[0], res[1]); })
+      .then(function (res) { render(res[0], res[1], res[2]); })
       .catch(function (erro) {
         if (window.console) console.error(erro);
         $('erro-carga').hidden = false;

@@ -397,6 +397,46 @@ a:hover { color: var(--cor-primaria-escura); }
 .tabela-agenda .linha-proxima { background: var(--cor-destaque-fundo); }
 .tabela-agenda .linha-proxima td { border-bottom-color: var(--cor-destaque-borda); }
 
+/* ---------- Projeção da CCEE ---------- */
+.projecao-resumo {
+  margin: 0 0 var(--espaco-4);
+  padding: var(--espaco-4);
+  background: var(--cor-fundo-alt);
+  border: 1px solid var(--cor-borda);
+  border-left: 4px solid var(--cor-primaria);
+  border-radius: var(--raio);
+}
+.projecao-edicao {
+  margin: 0 0 var(--espaco-1);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cor-texto-suave);
+}
+.projecao-texto {
+  margin: 0 0 var(--espaco-3);
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+.projecao-destaques {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: var(--espaco-2);
+  font-size: 0.9375rem;
+  color: var(--cor-texto-suave);
+}
+.projecao-aviso {
+  margin: 0 0 var(--espaco-3);
+  padding: var(--espaco-3) var(--espaco-4);
+  font-size: 0.875rem;
+  color: var(--bandeira-amarela-texto);
+  background: var(--bandeira-amarela-fundo);
+  border: 1px solid var(--bandeira-amarela-borda);
+  border-radius: var(--raio);
+}
+
 /* ---------- Gráfico ---------- */
 .grafico-rolagem {
   overflow-x: auto;
@@ -624,5 +664,6 @@ a:hover { color: var(--cor-primaria-escura); }
   .skip-link, .estimativa-vazia, .chips { display: none; }
   .cartao { border: 1px solid #999; break-inside: avoid; }
   .agenda-proxima { break-inside: avoid; }
+  .projecao-resumo { break-inside: avoid; }
   .grafico-rolagem { overflow: visible; }
 }
