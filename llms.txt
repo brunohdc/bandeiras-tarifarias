@@ -18,6 +18,10 @@
 - Unidades com consumo igual ou inferior a 30 kWh no mês são isentas do adicional (Resolução ANEEL nº 1.000/2021).
 - Os valores publicados são sem tributos; ICMS, PIS/COFINS e outros encargos aparecem separadamente na fatura.
 
+## Privacidade
+
+- [Privacidade e cookies](https://brunohdc.github.io/bandeiras-tarifarias/privacidade.html): dados coletados pelo Google Analytics, cookies, retenção, direitos e como aceitar, recusar ou revogar o consentimento.
+
 ## Fonte
 
 - ANEEL — Dados Abertos: Bandeiras Tarifárias: https://dadosabertos.aneel.gov.br/dataset/bandeiras-tarifarias

@@ -27,7 +27,6 @@
 <meta name="twitter:description" content="Bandeira vigente, calendário de divulgação e série mensal desde 2015 — dados da ANEEL.">
 <meta name="twitter:image" content="https://brunohdc.github.io/bandeiras-tarifarias/og-image.png">
 
-<link rel="preconnect" href="https://www.googletagmanager.com">
 <script>
   try {
     if (localStorage.getItem('visao-bandeiras') === 'detalhada' || location.hash === '#passado') {
@@ -35,16 +34,7 @@
     }
   } catch (e) {}
 </script>
-<link rel="stylesheet" href="bandeiras.css?v=8">
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-L1BM28TN18"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-L1BM28TN18');
-</script>
+<link rel="stylesheet" href="bandeiras.css?v=10">
 
 <!-- Dados estruturados para buscadores e ferramentas de IA -->
 <script type="application/ld+json">
@@ -351,9 +341,13 @@
     <p class="rodape-nota rodape-dados">
       <a href="dados.html">Versão em texto dos dados</a> (sem JavaScript), para leitores e agentes.
     </p>
+    <p class="rodape-nota rodape-links">
+      <a href="privacidade.html">Privacidade e cookies</a>
+      · <button type="button" class="link-botao" data-cookies>Alterar consentimento</button>
+    </p>
     <p class="rodape-nota rodape-analytics">
-      Esta página usa o Google Analytics para medir audiência (visitas e tempo de permanência)
-      de forma agregada, sem fins publicitários.
+      Com o seu consentimento, esta página usa o Google Analytics para medir audiência
+      (visitas e tempo de permanência) de forma agregada, sem fins publicitários.
     </p>
   </div>
 </footer>
@@ -1597,6 +1591,7 @@
 }
 </script>
 
-<script src="bandeiras.js?v=7"></script>
+<script src="consentimento.js?v=2"></script>
+<script src="bandeiras.js?v=8"></script>
 </body>
 </html>

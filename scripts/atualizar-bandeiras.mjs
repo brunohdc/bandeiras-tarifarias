@@ -137,6 +137,9 @@ function normalizar(texto) {
 
     const b = bandeiraDe(linha[idx.NomBandeiraAcionada]);
     const adicionalMwh = parseValor(linha[idx.VlrAdicionalBandeira]);
+    if (!Number.isFinite(adicionalMwh) || adicionalMwh < 0) {
+      throw new Error('Adicional inválido em ' + competencia + ': ' + adicionalMwh);
+    }
 
     meses.push({
       competencia,
@@ -149,6 +152,12 @@ function normalizar(texto) {
   }
 
   meses.sort((a, b) => (a.competencia < b.competencia ? -1 : 1));
+
+  if (!meses.length) throw new Error('Nenhum mês válido no CSV');
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(atualizadoEm) ||
+      isNaN(new Date(atualizadoEm + 'T00:00:00Z').getTime())) {
+    throw new Error('Data de atualização inválida: ' + atualizadoEm);
+  }
 
   /* Sem lacunas na série mensal */
   for (let i = 1; i < meses.length; i++) {
@@ -190,7 +199,12 @@ async function main() {
   console.log('Baixando CSV da ANEEL...');
   const resposta = await fetch(URL_CSV);
   if (!resposta.ok) throw new Error('HTTP ' + resposta.status + ' ao baixar o CSV');
+  const tipo = resposta.headers.get('content-type') || '';
+  if (tipo && !/csv|text\/plain|octet-stream/i.test(tipo)) {
+    throw new Error('Content-Type inesperado ao baixar o CSV: ' + tipo);
+  }
   const texto = await resposta.text();
+  if (texto.length > 5_000_000) throw new Error('CSV grande demais: ' + texto.length + ' caracteres');
 
   const dados = normalizar(texto);
   const json = JSON.stringify(dados, null, 2) + '\n';

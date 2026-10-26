@@ -8,10 +8,12 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { carregarEValidar } from './validar-dados.mjs';
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
 const BASE = 'https://brunohdc.github.io/bandeiras-tarifarias/';
-const CSS_V = '8';
+const CSS_V = '10';
+const PRIVACIDADE_ATUALIZADA = '2026-10-26';
 
 const MESES_CURTOS = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun',
                       'jul', 'ago', 'set', 'out', 'nov', 'dez'];
@@ -76,10 +78,6 @@ function textoAdicionalLongo(mes) {
   if (!mes.adicionalMwh) return 'R$ 0,00 a cada 100 kWh (sem acréscimo)';
   return 'R$ ' + R100.format(mes.adicionalMwh / 10) + ' a cada 100 kWh (' +
          RKWH.format(mes.adicionalKwh) + '/kWh)';
-}
-
-function lerJson(nome) {
-  return readFile(join(RAIZ, 'data', nome), 'utf8').then((txt) => JSON.parse(txt));
 }
 
 async function salvar(caminho, conteudo) {
@@ -332,9 +330,7 @@ function blocoAvisos() {
 }
 
 async function main() {
-  const dados = await lerJson('bandeiras.json');
-  const agenda = await lerJson('agenda.json');
-  const projecao = await lerJson('projecao.json');
+  const { dados, agenda, projecao } = await carregarEValidar();
   const template = await readFile(join(RAIZ, 'scripts', 'dados.template.html'), 'utf8');
 
   const html = template
@@ -371,6 +367,12 @@ async function main() {
     <lastmod>${ultimaAtualizacao}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>${BASE}privacidade.html</loc>
+    <lastmod>${PRIVACIDADE_ATUALIZADA}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>
 `;

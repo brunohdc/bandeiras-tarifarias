@@ -14,7 +14,8 @@ import json
 import os
 import re
 import sys
-from urllib.parse import unquote
+from datetime import datetime
+from urllib.parse import unquote, urlparse
 
 from playwright.sync_api import sync_playwright
 
@@ -43,6 +44,21 @@ RE_EDICAO = re.compile(r"(\d+)\s*(?:º|°|o)\.?\s*Encontro\s+do\s+PLD", re.IGNOR
 RE_MES = re.compile(
     r"Encontro\s+do\s+PLD\s*-\s*([A-Za-zÀ-ÿ]+)\s+de\s+(\d{4})\.pdf", re.IGNORECASE
 )
+
+
+def validar_url(href):
+    parsed = urlparse(href)
+    if parsed.scheme != "https":
+        raise RuntimeError("URL da CCEE não é https: " + href)
+    if parsed.hostname not in ("www.ccee.org.br", "ccee.org.br"):
+        raise RuntimeError("Host inesperado para a CCEE: " + str(parsed.hostname))
+    if ".pdf" not in unquote(parsed.path).lower():
+        raise RuntimeError("Link da CCEE não aponta para PDF: " + href)
+
+
+def numero_edicao(valor):
+    encontrado = re.search(r"(\d+)", valor or "")
+    return int(encontrado.group(1)) if encontrado else None
 
 
 def escrever_output(chave, valor):
@@ -145,6 +161,12 @@ def main():
             atual = json.load(f)
 
     edicao, mes, url = descobrir_ultima_edicao()
+    validar_url(url)
+
+    numero_atual = numero_edicao(atual.get("edicao"))
+    numero_novo = numero_edicao(edicao)
+    if numero_atual is not None and numero_novo is not None and numero_novo < numero_atual:
+        raise RuntimeError("Edição mais antiga que a atual: " + edicao)
 
     if (
         atual.get("edicao") == edicao
@@ -160,13 +182,34 @@ def main():
     novo["edicao"] = edicao
     novo["mes"] = mes
     novo["url"] = url
-    novo.setdefault("pagina", 0)
+    novo.setdefault("pagina", None)
     novo.setdefault("resumo", "")
     novo.setdefault("destaques", [])
     novo.setdefault("ressalva", "")
     novo.setdefault("resumoEdicao", edicao)
 
     desatualizado = novo.get("resumoEdicao") != edicao
+
+    if not re.fullmatch(r"\d{4}-(0[1-9]|1[0-2])", mes):
+        raise RuntimeError("Mês inválido: " + mes)
+
+    pagina = novo.get("pagina")
+    if pagina is not None and (isinstance(pagina, bool) or not isinstance(pagina, int) or pagina < 1):
+        raise RuntimeError("Página inválida: " + str(pagina))
+
+    for campo in ("edicao", "mes", "url", "resumo", "ressalva", "resumoEdicao", "atualizadoEm"):
+        if not isinstance(novo.get(campo), str) or not novo[campo].strip():
+            raise RuntimeError("Campo obrigatório vazio: " + campo)
+
+    if not isinstance(novo.get("destaques"), list) or any(
+        not isinstance(item, str) for item in novo["destaques"]
+    ):
+        raise RuntimeError("Destaques inválidos")
+
+    try:
+        datetime.strptime(novo["atualizadoEm"], "%Y-%m-%d")
+    except ValueError:
+        raise RuntimeError("atualizadoEm inválido: " + str(novo.get("atualizadoEm")))
 
     with open(JSON_PATH, "w", encoding="utf-8", newline="\n") as f:
         json.dump(novo, f, ensure_ascii=False, indent=2)

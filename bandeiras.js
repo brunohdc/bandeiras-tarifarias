@@ -31,6 +31,14 @@
   }
   function pad(n) { return (n < 10 ? '0' : '') + n; }
 
+  function urlHttps(valor) {
+    try {
+      return new URL(valor, location.href).protocol === 'https:';
+    } catch (e) {
+      return false;
+    }
+  }
+
   function rotuloCurto(comp) {
     var p = partes(comp);
     return MESES_CURTOS[p.mes - 1] + '/' + p.ano;
@@ -71,7 +79,7 @@
   }
 
   function montarLink(el, href, rotulo) {
-    if (!el) return;
+    if (!el || !urlHttps(href)) return;
     el.setAttribute('href', href);
     el.textContent = rotulo;
     var span = document.createElement('span');
@@ -290,7 +298,7 @@
     }
 
     var link = $('projecao-fonte');
-    if (projecao.url) {
+    if (projecao.url && urlHttps(projecao.url)) {
       var href = projecao.url;
       if (projecao.pagina && href.indexOf('#') === -1) href += '#page=' + projecao.pagina;
       link.setAttribute('href', href);
@@ -743,9 +751,19 @@
 
   /* ---------- Inicialização ---------- */
   function render(dados, agenda, projecao) {
-    if (!dados || !dados.meses || !dados.meses.length || !dados.vigente) {
+    if (!dados || !Array.isArray(dados.meses) || !dados.meses.length ||
+        !Array.isArray(dados.bandeiras) || !dados.bandeiras.length ||
+        !dados.vigente || !dados.vigente.competencia || !dados.vigente.chave ||
+        !dados.fonte) {
       throw new Error('JSON de dados incompleto');
     }
+
+    var chavesValidas = {};
+    dados.bandeiras.forEach(function (b) { chavesValidas[b.chave] = true; });
+    dados.meses.forEach(function (m) {
+      if (!chavesValidas[m.chave]) throw new Error('Bandeira desconhecida: ' + m.chave);
+    });
+
     dadosAtuais = dados;
     renderVigente(dados);
     renderAgenda(dados, agenda);
