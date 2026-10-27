@@ -12,7 +12,7 @@ import { carregarEValidar } from './validar-dados.mjs';
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
 const BASE = 'https://brunohdc.github.io/bandeiras-tarifarias/';
-const CSS_V = '10';
+const CSS_V = '11';
 const PRIVACIDADE_ATUALIZADA = '2026-10-26';
 
 const MESES_CURTOS = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun',
